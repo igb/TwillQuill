@@ -1,0 +1,602 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CCA0C74028417E7E00207AFD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA0C73F28417E7E00207AFD /* AppDelegate.m */; };
+		CCA0C74328417E7E00207AFD /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA0C74228417E7E00207AFD /* SceneDelegate.m */; };
+		CCA0C74628417E7E00207AFD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA0C74528417E7E00207AFD /* ViewController.m */; };
+		CCA0C74928417E7E00207AFD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCA0C74728417E7E00207AFD /* Main.storyboard */; };
+		CCA0C74B28417E8000207AFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCA0C74A28417E8000207AFD /* Assets.xcassets */; };
+		CCA0C74E28417E8000207AFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCA0C74C28417E8000207AFD /* LaunchScreen.storyboard */; };
+		CCA0C75128417E8000207AFD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA0C75028417E8000207AFD /* main.m */; };
+		CCA0C75B28417E8000207AFD /* TwillTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA0C75A28417E8000207AFD /* TwillTests.m */; };
+		CCA0C76528417E8000207AFD /* TwillUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA0C76428417E8000207AFD /* TwillUITests.m */; };
+		CCA0C76728417E8000207AFD /* TwillUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA0C76628417E8000207AFD /* TwillUITestsLaunchTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CCA0C75728417E8000207AFD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CCA0C73328417E7E00207AFD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CCA0C73A28417E7E00207AFD;
+			remoteInfo = Twill;
+		};
+		CCA0C76128417E8000207AFD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CCA0C73328417E7E00207AFD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CCA0C73A28417E7E00207AFD;
+			remoteInfo = Twill;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CCA0C73B28417E7E00207AFD /* Twill.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twill.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CCA0C73E28417E7E00207AFD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		CCA0C73F28417E7E00207AFD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CCA0C74128417E7E00207AFD /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		CCA0C74228417E7E00207AFD /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		CCA0C74428417E7E00207AFD /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		CCA0C74528417E7E00207AFD /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		CCA0C74828417E7E00207AFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CCA0C74A28417E8000207AFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CCA0C74D28417E8000207AFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CCA0C74F28417E8000207AFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CCA0C75028417E8000207AFD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CCA0C75628417E8000207AFD /* TwillTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwillTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CCA0C75A28417E8000207AFD /* TwillTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TwillTests.m; sourceTree = "<group>"; };
+		CCA0C76028417E8000207AFD /* TwillUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwillUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CCA0C76428417E8000207AFD /* TwillUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TwillUITests.m; sourceTree = "<group>"; };
+		CCA0C76628417E8000207AFD /* TwillUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TwillUITestsLaunchTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CCA0C73828417E7E00207AFD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CCA0C75328417E8000207AFD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CCA0C75D28417E8000207AFD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CCA0C73228417E7E00207AFD = {
+			isa = PBXGroup;
+			children = (
+				CCA0C73D28417E7E00207AFD /* Twill */,
+				CCA0C75928417E8000207AFD /* TwillTests */,
+				CCA0C76328417E8000207AFD /* TwillUITests */,
+				CCA0C73C28417E7E00207AFD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CCA0C73C28417E7E00207AFD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CCA0C73B28417E7E00207AFD /* Twill.app */,
+				CCA0C75628417E8000207AFD /* TwillTests.xctest */,
+				CCA0C76028417E8000207AFD /* TwillUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CCA0C73D28417E7E00207AFD /* Twill */ = {
+			isa = PBXGroup;
+			children = (
+				CCA0C73E28417E7E00207AFD /* AppDelegate.h */,
+				CCA0C73F28417E7E00207AFD /* AppDelegate.m */,
+				CCA0C74128417E7E00207AFD /* SceneDelegate.h */,
+				CCA0C74228417E7E00207AFD /* SceneDelegate.m */,
+				CCA0C74428417E7E00207AFD /* ViewController.h */,
+				CCA0C74528417E7E00207AFD /* ViewController.m */,
+				CCA0C74728417E7E00207AFD /* Main.storyboard */,
+				CCA0C74A28417E8000207AFD /* Assets.xcassets */,
+				CCA0C74C28417E8000207AFD /* LaunchScreen.storyboard */,
+				CCA0C74F28417E8000207AFD /* Info.plist */,
+				CCA0C75028417E8000207AFD /* main.m */,
+			);
+			path = Twill;
+			sourceTree = "<group>";
+		};
+		CCA0C75928417E8000207AFD /* TwillTests */ = {
+			isa = PBXGroup;
+			children = (
+				CCA0C75A28417E8000207AFD /* TwillTests.m */,
+			);
+			path = TwillTests;
+			sourceTree = "<group>";
+		};
+		CCA0C76328417E8000207AFD /* TwillUITests */ = {
+			isa = PBXGroup;
+			children = (
+				CCA0C76428417E8000207AFD /* TwillUITests.m */,
+				CCA0C76628417E8000207AFD /* TwillUITestsLaunchTests.m */,
+			);
+			path = TwillUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CCA0C73A28417E7E00207AFD /* Twill */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CCA0C76A28417E8000207AFD /* Build configuration list for PBXNativeTarget "Twill" */;
+			buildPhases = (
+				CCA0C73728417E7E00207AFD /* Sources */,
+				CCA0C73828417E7E00207AFD /* Frameworks */,
+				CCA0C73928417E7E00207AFD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Twill;
+			productName = Twill;
+			productReference = CCA0C73B28417E7E00207AFD /* Twill.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CCA0C75528417E8000207AFD /* TwillTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CCA0C76D28417E8000207AFD /* Build configuration list for PBXNativeTarget "TwillTests" */;
+			buildPhases = (
+				CCA0C75228417E8000207AFD /* Sources */,
+				CCA0C75328417E8000207AFD /* Frameworks */,
+				CCA0C75428417E8000207AFD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CCA0C75828417E8000207AFD /* PBXTargetDependency */,
+			);
+			name = TwillTests;
+			productName = TwillTests;
+			productReference = CCA0C75628417E8000207AFD /* TwillTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CCA0C75F28417E8000207AFD /* TwillUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CCA0C77028417E8000207AFD /* Build configuration list for PBXNativeTarget "TwillUITests" */;
+			buildPhases = (
+				CCA0C75C28417E8000207AFD /* Sources */,
+				CCA0C75D28417E8000207AFD /* Frameworks */,
+				CCA0C75E28417E8000207AFD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CCA0C76228417E8000207AFD /* PBXTargetDependency */,
+			);
+			name = TwillUITests;
+			productName = TwillUITests;
+			productReference = CCA0C76028417E8000207AFD /* TwillUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CCA0C73328417E7E00207AFD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1330;
+				TargetAttributes = {
+					CCA0C73A28417E7E00207AFD = {
+						CreatedOnToolsVersion = 13.3;
+					};
+					CCA0C75528417E8000207AFD = {
+						CreatedOnToolsVersion = 13.3;
+						TestTargetID = CCA0C73A28417E7E00207AFD;
+					};
+					CCA0C75F28417E8000207AFD = {
+						CreatedOnToolsVersion = 13.3;
+						TestTargetID = CCA0C73A28417E7E00207AFD;
+					};
+				};
+			};
+			buildConfigurationList = CCA0C73628417E7E00207AFD /* Build configuration list for PBXProject "Twill" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CCA0C73228417E7E00207AFD;
+			productRefGroup = CCA0C73C28417E7E00207AFD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CCA0C73A28417E7E00207AFD /* Twill */,
+				CCA0C75528417E8000207AFD /* TwillTests */,
+				CCA0C75F28417E8000207AFD /* TwillUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CCA0C73928417E7E00207AFD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CCA0C74E28417E8000207AFD /* LaunchScreen.storyboard in Resources */,
+				CCA0C74B28417E8000207AFD /* Assets.xcassets in Resources */,
+				CCA0C74928417E7E00207AFD /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CCA0C75428417E8000207AFD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CCA0C75E28417E8000207AFD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CCA0C73728417E7E00207AFD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CCA0C74628417E7E00207AFD /* ViewController.m in Sources */,
+				CCA0C74028417E7E00207AFD /* AppDelegate.m in Sources */,
+				CCA0C75128417E8000207AFD /* main.m in Sources */,
+				CCA0C74328417E7E00207AFD /* SceneDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CCA0C75228417E8000207AFD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CCA0C75B28417E8000207AFD /* TwillTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CCA0C75C28417E8000207AFD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CCA0C76528417E8000207AFD /* TwillUITests.m in Sources */,
+				CCA0C76728417E8000207AFD /* TwillUITestsLaunchTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CCA0C75828417E8000207AFD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CCA0C73A28417E7E00207AFD /* Twill */;
+			targetProxy = CCA0C75728417E8000207AFD /* PBXContainerItemProxy */;
+		};
+		CCA0C76228417E8000207AFD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CCA0C73A28417E7E00207AFD /* Twill */;
+			targetProxy = CCA0C76128417E8000207AFD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CCA0C74728417E7E00207AFD /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CCA0C74828417E7E00207AFD /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CCA0C74C28417E8000207AFD /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CCA0C74D28417E8000207AFD /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CCA0C76828417E8000207AFD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		CCA0C76928417E8000207AFD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CCA0C76B28417E8000207AFD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 855SPZ345Z;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Twill/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.hccp.Twill;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CCA0C76C28417E8000207AFD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 855SPZ345Z;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Twill/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.hccp.Twill;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CCA0C76E28417E8000207AFD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 855SPZ345Z;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.hccp.TwillTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Twill.app/Twill";
+			};
+			name = Debug;
+		};
+		CCA0C76F28417E8000207AFD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 855SPZ345Z;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.hccp.TwillTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Twill.app/Twill";
+			};
+			name = Release;
+		};
+		CCA0C77128417E8000207AFD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 855SPZ345Z;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.hccp.TwillUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Twill;
+			};
+			name = Debug;
+		};
+		CCA0C77228417E8000207AFD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 855SPZ345Z;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.hccp.TwillUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Twill;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CCA0C73628417E7E00207AFD /* Build configuration list for PBXProject "Twill" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CCA0C76828417E8000207AFD /* Debug */,
+				CCA0C76928417E8000207AFD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CCA0C76A28417E8000207AFD /* Build configuration list for PBXNativeTarget "Twill" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CCA0C76B28417E8000207AFD /* Debug */,
+				CCA0C76C28417E8000207AFD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CCA0C76D28417E8000207AFD /* Build configuration list for PBXNativeTarget "TwillTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CCA0C76E28417E8000207AFD /* Debug */,
+				CCA0C76F28417E8000207AFD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CCA0C77028417E8000207AFD /* Build configuration list for PBXNativeTarget "TwillUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CCA0C77128417E8000207AFD /* Debug */,
+				CCA0C77228417E8000207AFD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CCA0C73328417E7E00207AFD /* Project object */;
+}

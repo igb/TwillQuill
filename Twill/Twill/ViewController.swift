@@ -11,8 +11,15 @@ import PencilKit
 class ViewController:  UIViewController, PKCanvasViewDelegate, PKToolPickerObserver {
     
     @IBOutlet weak var canvasView: PKCanvasView!
+    @IBOutlet weak var tweetButton: UIButton!
+    
+
     var toolPicker: PKToolPicker!
 
+    
+    @IBAction func tweet(_ sender: UIButton) {
+        NSLog("tweet")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +31,8 @@ class ViewController:  UIViewController, PKCanvasViewDelegate, PKToolPickerObser
     /// Set up the drawing initially.
        override func viewWillAppear(_ animated: Bool) {
            super.viewWillAppear(animated)
+           navigationController?.setNavigationBarHidden(true, animated: animated)
+
            
            // Set up the canvas view with the first drawing from the data model.
            canvasView.delegate = self
@@ -51,7 +60,10 @@ class ViewController:  UIViewController, PKCanvasViewDelegate, PKToolPickerObser
        }
 
 
-
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
     
 
     

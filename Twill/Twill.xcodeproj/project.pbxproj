@@ -1,0 +1,607 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CC5F4AC828419AB1001EFECC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5F4AC728419AB1001EFECC /* AppDelegate.swift */; };
+		CC5F4ACA28419AB1001EFECC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5F4AC928419AB1001EFECC /* SceneDelegate.swift */; };
+		CC5F4ACC28419AB1001EFECC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5F4ACB28419AB1001EFECC /* ViewController.swift */; };
+		CC5F4ACF28419AB1001EFECC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC5F4ACD28419AB1001EFECC /* Main.storyboard */; };
+		CC5F4AD128419AB2001EFECC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC5F4AD028419AB2001EFECC /* Assets.xcassets */; };
+		CC5F4AD428419AB2001EFECC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC5F4AD228419AB2001EFECC /* LaunchScreen.storyboard */; };
+		CC5F4ADF28419AB3001EFECC /* TwillTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5F4ADE28419AB3001EFECC /* TwillTests.swift */; };
+		CC5F4AE928419AB3001EFECC /* TwillUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5F4AE828419AB3001EFECC /* TwillUITests.swift */; };
+		CC5F4AEB28419AB3001EFECC /* TwillUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5F4AEA28419AB3001EFECC /* TwillUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CC5F4ADB28419AB3001EFECC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CC5F4ABC28419AB1001EFECC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CC5F4AC328419AB1001EFECC;
+			remoteInfo = Twill;
+		};
+		CC5F4AE528419AB3001EFECC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CC5F4ABC28419AB1001EFECC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CC5F4AC328419AB1001EFECC;
+			remoteInfo = Twill;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CC5F4AC428419AB1001EFECC /* Twill.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twill.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC5F4AC728419AB1001EFECC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CC5F4AC928419AB1001EFECC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		CC5F4ACB28419AB1001EFECC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CC5F4ACE28419AB1001EFECC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CC5F4AD028419AB2001EFECC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CC5F4AD328419AB2001EFECC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CC5F4AD528419AB2001EFECC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC5F4ADA28419AB3001EFECC /* TwillTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwillTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC5F4ADE28419AB3001EFECC /* TwillTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwillTests.swift; sourceTree = "<group>"; };
+		CC5F4AE428419AB3001EFECC /* TwillUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwillUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC5F4AE828419AB3001EFECC /* TwillUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwillUITests.swift; sourceTree = "<group>"; };
+		CC5F4AEA28419AB3001EFECC /* TwillUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwillUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CC5F4AC128419AB1001EFECC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC5F4AD728419AB3001EFECC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC5F4AE128419AB3001EFECC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CC5F4ABB28419AB1001EFECC = {
+			isa = PBXGroup;
+			children = (
+				CC5F4AC628419AB1001EFECC /* Twill */,
+				CC5F4ADD28419AB3001EFECC /* TwillTests */,
+				CC5F4AE728419AB3001EFECC /* TwillUITests */,
+				CC5F4AC528419AB1001EFECC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CC5F4AC528419AB1001EFECC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CC5F4AC428419AB1001EFECC /* Twill.app */,
+				CC5F4ADA28419AB3001EFECC /* TwillTests.xctest */,
+				CC5F4AE428419AB3001EFECC /* TwillUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CC5F4AC628419AB1001EFECC /* Twill */ = {
+			isa = PBXGroup;
+			children = (
+				CC5F4AC728419AB1001EFECC /* AppDelegate.swift */,
+				CC5F4AC928419AB1001EFECC /* SceneDelegate.swift */,
+				CC5F4ACB28419AB1001EFECC /* ViewController.swift */,
+				CC5F4ACD28419AB1001EFECC /* Main.storyboard */,
+				CC5F4AD028419AB2001EFECC /* Assets.xcassets */,
+				CC5F4AD228419AB2001EFECC /* LaunchScreen.storyboard */,
+				CC5F4AD528419AB2001EFECC /* Info.plist */,
+			);
+			path = Twill;
+			sourceTree = "<group>";
+		};
+		CC5F4ADD28419AB3001EFECC /* TwillTests */ = {
+			isa = PBXGroup;
+			children = (
+				CC5F4ADE28419AB3001EFECC /* TwillTests.swift */,
+			);
+			path = TwillTests;
+			sourceTree = "<group>";
+		};
+		CC5F4AE728419AB3001EFECC /* TwillUITests */ = {
+			isa = PBXGroup;
+			children = (
+				CC5F4AE828419AB3001EFECC /* TwillUITests.swift */,
+				CC5F4AEA28419AB3001EFECC /* TwillUITestsLaunchTests.swift */,
+			);
+			path = TwillUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CC5F4AC328419AB1001EFECC /* Twill */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CC5F4AEE28419AB3001EFECC /* Build configuration list for PBXNativeTarget "Twill" */;
+			buildPhases = (
+				CC5F4AC028419AB1001EFECC /* Sources */,
+				CC5F4AC128419AB1001EFECC /* Frameworks */,
+				CC5F4AC228419AB1001EFECC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Twill;
+			productName = Twill;
+			productReference = CC5F4AC428419AB1001EFECC /* Twill.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CC5F4AD928419AB3001EFECC /* TwillTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CC5F4AF128419AB3001EFECC /* Build configuration list for PBXNativeTarget "TwillTests" */;
+			buildPhases = (
+				CC5F4AD628419AB3001EFECC /* Sources */,
+				CC5F4AD728419AB3001EFECC /* Frameworks */,
+				CC5F4AD828419AB3001EFECC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CC5F4ADC28419AB3001EFECC /* PBXTargetDependency */,
+			);
+			name = TwillTests;
+			productName = TwillTests;
+			productReference = CC5F4ADA28419AB3001EFECC /* TwillTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CC5F4AE328419AB3001EFECC /* TwillUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CC5F4AF428419AB3001EFECC /* Build configuration list for PBXNativeTarget "TwillUITests" */;
+			buildPhases = (
+				CC5F4AE028419AB3001EFECC /* Sources */,
+				CC5F4AE128419AB3001EFECC /* Frameworks */,
+				CC5F4AE228419AB3001EFECC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CC5F4AE628419AB3001EFECC /* PBXTargetDependency */,
+			);
+			name = TwillUITests;
+			productName = TwillUITests;
+			productReference = CC5F4AE428419AB3001EFECC /* TwillUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CC5F4ABC28419AB1001EFECC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1330;
+				LastUpgradeCheck = 1330;
+				TargetAttributes = {
+					CC5F4AC328419AB1001EFECC = {
+						CreatedOnToolsVersion = 13.3;
+					};
+					CC5F4AD928419AB3001EFECC = {
+						CreatedOnToolsVersion = 13.3;
+						TestTargetID = CC5F4AC328419AB1001EFECC;
+					};
+					CC5F4AE328419AB3001EFECC = {
+						CreatedOnToolsVersion = 13.3;
+						TestTargetID = CC5F4AC328419AB1001EFECC;
+					};
+				};
+			};
+			buildConfigurationList = CC5F4ABF28419AB1001EFECC /* Build configuration list for PBXProject "Twill" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CC5F4ABB28419AB1001EFECC;
+			productRefGroup = CC5F4AC528419AB1001EFECC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CC5F4AC328419AB1001EFECC /* Twill */,
+				CC5F4AD928419AB3001EFECC /* TwillTests */,
+				CC5F4AE328419AB3001EFECC /* TwillUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CC5F4AC228419AB1001EFECC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC5F4AD428419AB2001EFECC /* LaunchScreen.storyboard in Resources */,
+				CC5F4AD128419AB2001EFECC /* Assets.xcassets in Resources */,
+				CC5F4ACF28419AB1001EFECC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC5F4AD828419AB3001EFECC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC5F4AE228419AB3001EFECC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CC5F4AC028419AB1001EFECC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC5F4ACC28419AB1001EFECC /* ViewController.swift in Sources */,
+				CC5F4AC828419AB1001EFECC /* AppDelegate.swift in Sources */,
+				CC5F4ACA28419AB1001EFECC /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC5F4AD628419AB3001EFECC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC5F4ADF28419AB3001EFECC /* TwillTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC5F4AE028419AB3001EFECC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC5F4AE928419AB3001EFECC /* TwillUITests.swift in Sources */,
+				CC5F4AEB28419AB3001EFECC /* TwillUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CC5F4ADC28419AB3001EFECC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CC5F4AC328419AB1001EFECC /* Twill */;
+			targetProxy = CC5F4ADB28419AB3001EFECC /* PBXContainerItemProxy */;
+		};
+		CC5F4AE628419AB3001EFECC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CC5F4AC328419AB1001EFECC /* Twill */;
+			targetProxy = CC5F4AE528419AB3001EFECC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CC5F4ACD28419AB1001EFECC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CC5F4ACE28419AB1001EFECC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CC5F4AD228419AB2001EFECC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CC5F4AD328419AB2001EFECC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CC5F4AEC28419AB3001EFECC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CC5F4AED28419AB3001EFECC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CC5F4AEF28419AB3001EFECC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 855SPZ345Z;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Twill/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.hccp.Twill;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CC5F4AF028419AB3001EFECC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 855SPZ345Z;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Twill/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.hccp.Twill;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CC5F4AF228419AB3001EFECC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 855SPZ345Z;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.hccp.TwillTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Twill.app/Twill";
+			};
+			name = Debug;
+		};
+		CC5F4AF328419AB3001EFECC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 855SPZ345Z;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.hccp.TwillTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Twill.app/Twill";
+			};
+			name = Release;
+		};
+		CC5F4AF528419AB3001EFECC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 855SPZ345Z;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.hccp.TwillUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Twill;
+			};
+			name = Debug;
+		};
+		CC5F4AF628419AB3001EFECC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 855SPZ345Z;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.hccp.TwillUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Twill;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CC5F4ABF28419AB1001EFECC /* Build configuration list for PBXProject "Twill" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC5F4AEC28419AB3001EFECC /* Debug */,
+				CC5F4AED28419AB3001EFECC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CC5F4AEE28419AB3001EFECC /* Build configuration list for PBXNativeTarget "Twill" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC5F4AEF28419AB3001EFECC /* Debug */,
+				CC5F4AF028419AB3001EFECC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CC5F4AF128419AB3001EFECC /* Build configuration list for PBXNativeTarget "TwillTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC5F4AF228419AB3001EFECC /* Debug */,
+				CC5F4AF328419AB3001EFECC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CC5F4AF428419AB3001EFECC /* Build configuration list for PBXNativeTarget "TwillUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC5F4AF528419AB3001EFECC /* Debug */,
+				CC5F4AF628419AB3001EFECC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CC5F4ABC28419AB1001EFECC /* Project object */;
+}

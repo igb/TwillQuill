@@ -12,6 +12,7 @@ class ViewController:  UIViewController, PKCanvasViewDelegate, PKToolPickerObser
     
     @IBOutlet weak var canvasView: PKCanvasView!
     @IBOutlet weak var tweetButton: UIButton!
+    var twitter = TwitterClient();
     
 
     var toolPicker: PKToolPicker!
@@ -19,8 +20,8 @@ class ViewController:  UIViewController, PKCanvasViewDelegate, PKToolPickerObser
     
     @IBAction func tweet(_ sender: UIButton) {
         NSLog("tweet")
-        UIImageWriteToSavedPhotosAlbum(canvasView.asImage(),nil,nil,nil);
-
+       // UIImageWriteToSavedPhotosAlbum(canvasView.asImage(),nil,nil,nil);
+        twitter.tweet(tweet: "HOLA")
         
     }
 
@@ -76,7 +77,9 @@ class ViewController:  UIViewController, PKCanvasViewDelegate, PKToolPickerObser
     
 }
 
-
+/**
+ This is how we get the image from the canvas. shrug
+ */
 extension UIView {
 
     // Using a function since `var image` might conflict with an existing variable

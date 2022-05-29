@@ -16,6 +16,8 @@
 		CC5F4ADF28419AB3001EFECC /* TwillTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5F4ADE28419AB3001EFECC /* TwillTests.swift */; };
 		CC5F4AE928419AB3001EFECC /* TwillUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5F4AE828419AB3001EFECC /* TwillUITests.swift */; };
 		CC5F4AEB28419AB3001EFECC /* TwillUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5F4AEA28419AB3001EFECC /* TwillUITestsLaunchTests.swift */; };
+		CC5F4AF828428D53001EFECC /* TwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5F4AF728428D53001EFECC /* TwitterClient.swift */; };
+		CC5F4AF928428D53001EFECC /* TwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5F4AF728428D53001EFECC /* TwitterClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,7 @@
 		CC5F4AE428419AB3001EFECC /* TwillUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwillUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC5F4AE828419AB3001EFECC /* TwillUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwillUITests.swift; sourceTree = "<group>"; };
 		CC5F4AEA28419AB3001EFECC /* TwillUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwillUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CC5F4AF728428D53001EFECC /* TwitterClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +109,7 @@
 				CC5F4AD028419AB2001EFECC /* Assets.xcassets */,
 				CC5F4AD228419AB2001EFECC /* LaunchScreen.storyboard */,
 				CC5F4AD528419AB2001EFECC /* Info.plist */,
+				CC5F4AF728428D53001EFECC /* TwitterClient.swift */,
 			);
 			path = Twill;
 			sourceTree = "<group>";
@@ -258,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC5F4AF828428D53001EFECC /* TwitterClient.swift in Sources */,
 				CC5F4ACC28419AB1001EFECC /* ViewController.swift in Sources */,
 				CC5F4AC828419AB1001EFECC /* AppDelegate.swift in Sources */,
 				CC5F4ACA28419AB1001EFECC /* SceneDelegate.swift in Sources */,
@@ -268,6 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC5F4AF928428D53001EFECC /* TwitterClient.swift in Sources */,
 				CC5F4ADF28419AB3001EFECC /* TwillTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

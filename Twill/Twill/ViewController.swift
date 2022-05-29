@@ -21,7 +21,7 @@ class ViewController:  UIViewController, PKCanvasViewDelegate, PKToolPickerObser
     @IBAction func tweet(_ sender: UIButton) {
         NSLog("tweet")
        // UIImageWriteToSavedPhotosAlbum(canvasView.asImage(),nil,nil,nil);
-        twitter.tweet(tweet: "HOLA")
+        twitter.tweet(tweet: "YAIOTCOIYAPL: Yet Another Implementation Of Twitter's Client OAuth In Yet Another Programming Language")
         
     }
 

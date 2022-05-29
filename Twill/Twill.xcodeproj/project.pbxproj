@@ -18,6 +18,7 @@
 		CC5F4AEB28419AB3001EFECC /* TwillUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5F4AEA28419AB3001EFECC /* TwillUITestsLaunchTests.swift */; };
 		CC5F4AF828428D53001EFECC /* TwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5F4AF728428D53001EFECC /* TwitterClient.swift */; };
 		CC5F4AF928428D53001EFECC /* TwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5F4AF728428D53001EFECC /* TwitterClient.swift */; };
+		CCB825F12843FA2100CECA4E /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CCB825F02843FA2100CECA4E /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		CC5F4AE828419AB3001EFECC /* TwillUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwillUITests.swift; sourceTree = "<group>"; };
 		CC5F4AEA28419AB3001EFECC /* TwillUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwillUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		CC5F4AF728428D53001EFECC /* TwitterClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterClient.swift; sourceTree = "<group>"; };
+		CCB825F02843FA2100CECA4E /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 		CC5F4ABB28419AB1001EFECC = {
 			isa = PBXGroup;
 			children = (
+				CCB825F02843FA2100CECA4E /* Settings.bundle */,
 				CC5F4AC628419AB1001EFECC /* Twill */,
 				CC5F4ADD28419AB3001EFECC /* TwillTests */,
 				CC5F4AE728419AB3001EFECC /* TwillUITests */,
@@ -235,6 +238,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCB825F12843FA2100CECA4E /* Settings.bundle in Resources */,
 				CC5F4AD428419AB2001EFECC /* LaunchScreen.storyboard in Resources */,
 				CC5F4AD128419AB2001EFECC /* Assets.xcassets in Resources */,
 				CC5F4ACF28419AB1001EFECC /* Main.storyboard in Resources */,

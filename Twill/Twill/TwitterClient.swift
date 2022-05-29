@@ -11,19 +11,53 @@ import CryptoKit
 class TwitterClient {
     
     func tweet(tweet: String) {
+        
+        // get api & access tokens/secrets from properties
+        //TODO: should move to a constructor
+        let defaults = UserDefaults.standard
+        let apiKey = defaults.string(forKey: "api_key")
+        let apiSecret = defaults.string(forKey: "api_secret")
+        let accessToken = defaults.string(forKey: "access_token")
+        let accessTokenSecret = defaults.string(forKey: "access_token_secret")
+        
+
+        
         NSLog(tweet)
+        var body="status="
+        body+=escapeUri(uri: tweet)
         let url = URL(string: "https://api.twitter.com/1.1/statuses/update.json")!
         var request = URLRequest(url: url)
         request.addValue("*/*", forHTTPHeaderField: "Accept")
         request.addValue("api.twitter.com", forHTTPHeaderField: "Host")
         request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         
-        var auth = createOAuthHeader(params: [("", ""), ("status", tweet)], url: "https://api.twitter.com/1.1/statuses/update.json", apiKey: "API_KEY", apiSecret: "API_SECRET", accessToken: "ACCESS_TOKEN", accessTokenSecret: "ACCESS_TOKEN_SECRET", nonce: getOauthNonce(), timestamp: getOauthTimestamp(), method: "post")
+        var auth = createOAuthHeader(params: [("status", tweet)], url: "https://api.twitter.com/1.1/statuses/update.json", apiKey: apiKey!, apiSecret: apiSecret!, accessToken: accessToken!, accessTokenSecret: accessTokenSecret!, nonce: getOauthNonce(), timestamp: getOauthTimestamp(), method: "post")
 
         
         request.addValue(auth, forHTTPHeaderField: "Authorization")
 
+        
+        
         request.httpMethod = "POST"
+        request.httpBody = Data(body.utf8)
+        
+        request.log();
+        
+        // Perform HTTP Request
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                
+                // Check for Error
+                if let error = error {
+                    print("Error took place \(error)")
+                    return
+                }
+         
+                // Convert HTTP Response Data to a String
+                if let data = data, let dataString = String(data: data, encoding: .utf8) {
+                    print("Response data string:\n \(dataString)")
+                }
+        }
+        task.resume()
         
         
     }
@@ -111,7 +145,7 @@ class TwitterClient {
     func escapeUri(uri:String)->String {
         
         var twitterCharacterSet = CharacterSet.urlQueryAllowed
-        twitterCharacterSet.remove(charactersIn: "+!,&=:/")
+        twitterCharacterSet.remove(charactersIn: "+!,&=:/'")
         return uri.addingPercentEncoding(withAllowedCharacters: twitterCharacterSet)!
     }
     
@@ -133,11 +167,14 @@ class TwitterClient {
         
     
     func getOauthNonce()->String {
-        return ""
+        return UUID().uuidString
     }
     
     func getOauthTimestamp() -> String {
-        return ""
+        let seconds = NSDate().timeIntervalSince1970
+        let longSeconds = CUnsignedLongLong(seconds)
+        return String(longSeconds)
+        
     }
     
     
@@ -145,3 +182,16 @@ class TwitterClient {
     
 }
 
+extension Data {
+    func toString() -> String? {
+        return String(data: self, encoding: .utf8)
+    }
+}
+
+extension URLRequest {
+    func log() {
+        print("\(httpMethod ?? "") \(self)")
+        print("BODY \n \(httpBody?.toString())")
+        print("HEADERS \n \(allHTTPHeaderFields)")
+    }
+}

@@ -117,7 +117,29 @@ class TwillTests: XCTestCase {
      }
           
 
-    
+    func testMediaResponse() throws {
+        let jsonResponse = """
+       {
+        \"media_id\": 710511363345354753,
+        \"media_id_string\": \"710511363345354753\",
+        \"media_key\": \"3_710511363345354753\",
+        \"size\": 11065,
+        \"expires_after_secs\": 86400,
+        \"image\": {
+          \"image_type\": \"image/jpeg\",
+          \"w\": 800,
+          \"h\": 320
+        }
+       }
+"""
+        
+        
+        let twitter = TwitterClient()
+        
+        
+        XCTAssertEqual("710511363345354753", twitter.handleMediaResponse(json: jsonResponse))
+        
+    }
     
     
     

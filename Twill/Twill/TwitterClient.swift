@@ -10,15 +10,27 @@ import CryptoKit
 
 class TwitterClient {
     
+    let apiKey:String;
+    let apiSecret:String;
+    let accessToken:String;
+    let accessTokenSecret:String;
+
+    init(apiKey:String, apiSecret:String, accessToken:String, accessTokenSecret:String) {
+        self.apiKey=apiKey
+        self.apiSecret=apiSecret
+        self.accessToken=accessToken
+        self.accessTokenSecret=accessTokenSecret
+    }
+    
+    init() {
+        self.apiKey=""
+        self.apiSecret=""
+        self.accessToken=""
+        self.accessTokenSecret=""
+    }
+    
     func tweet(tweet: String) {
         
-        // get api & access tokens/secrets from properties
-        //TODO: should move to a constructor
-        let defaults = UserDefaults.standard
-        let apiKey = defaults.string(forKey: "api_key")
-        let apiSecret = defaults.string(forKey: "api_secret")
-        let accessToken = defaults.string(forKey: "access_token")
-        let accessTokenSecret = defaults.string(forKey: "access_token_secret")
         
 
         
@@ -31,7 +43,7 @@ class TwitterClient {
         request.addValue("api.twitter.com", forHTTPHeaderField: "Host")
         request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         
-        var auth = createOAuthHeader(params: [("status", tweet)], url: "https://api.twitter.com/1.1/statuses/update.json", apiKey: apiKey!, apiSecret: apiSecret!, accessToken: accessToken!, accessTokenSecret: accessTokenSecret!, nonce: getOauthNonce(), timestamp: getOauthTimestamp(), method: "post")
+        let auth = createOAuthHeader(params: [("status", tweet)], url: "https://api.twitter.com/1.1/statuses/update.json", apiKey: self.apiKey, apiSecret: self.apiSecret, accessToken: self.accessToken, accessTokenSecret: self.accessTokenSecret, nonce: getOauthNonce(), timestamp: getOauthTimestamp(), method: "post")
 
         
         request.addValue(auth, forHTTPHeaderField: "Authorization")
@@ -63,6 +75,194 @@ class TwitterClient {
     }
     
     
+    
+    func tweetImage(image: Data, altText: String, status: String) {
+      
+        let mediaId=upload(image:image)
+        addAltText(mediaId: mediaId, altText:altText)
+        let headers=[("Accept", "*/*"),
+                ("Host","api.twitter.com"),
+                ("Content-Type","application/x-www-form-urlencoded"),
+                ("Authorization",
+                 createOAuthHeader(params:[("status", status), ("media_ids", mediaId)], url:"https://api.twitter.com/1.1/statuses/update.json", apiKey:apiKey, apiSecret:apiSecret, accessToken:accessToken, accessTokenSecret:accessTokenSecret, nonce:getOauthNonce(), timestamp:getOauthTimestamp(), method:"Post"))]
+              
+                 
+                 let url = URL(string: "https://api.twitter.com/1.1/statuses/update.json?status=" + status  + "&media_ids=" + mediaId)!
+                 var request = URLRequest(url: url)
+                 
+                 for (index, (key, value)) in headers.enumerated() {
+                     request.addValue(value, forHTTPHeaderField: key)
+                 }
+                 
+                request.httpMethod = "POST"
+
+                 
+                 // Perform HTTP Request
+                 let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                         
+                         // Check for Error
+                         if let error = error {
+                             print("Error took place \(error)")
+                             return
+                         }
+                  
+                         // Convert HTTP Response Data to a String
+                         if let data = data, let dataString = String(data: data, encoding: .utf8) {
+                             print("Response data string:\n \(dataString)")
+                         }
+                 }
+                 task.resume()
+                 
+                 
+                   
+    }
+    
+    func upload(image:Data) -> String {
+        
+        let mediaId = uploadInit(image:image)
+
+
+        let chunks=chunk(image:image, size:10485760)
+
+        uploadAppend(chunks:chunks, mediaId:mediaId)
+        uploadFinalize(mediaId:mediaId)
+        return mediaId
+        
+    }
+    
+    func chunk(image:Data, size:Int) -> [String] {
+        return [""]
+    }
+    
+    func uploadAppend(chunks:[String], mediaId:String) {
+        
+    }
+    
+    func uploadFinalize(mediaId:String) {
+        
+    }
+    
+    
+    
+    func uploadInit(image:Data) -> String {
+        let totalBytes =  String(image.count)
+
+            
+            let headers = [("Accept", "*/*"),
+                ("Host","upload.twitter.com"),
+                ("Content-Type","application/x-www-form-urlencoded"),
+                ("Authorization", createOAuthHeader(params: [("command", "INIT"),
+                                                             ("total_bytes", totalBytes),
+                                                             ("media_type", "img/png")], url: "https://upload.twitter.com/1.1/media/upload.json", apiKey: apiKey, apiSecret: apiSecret, accessToken: accessToken, accessTokenSecret: accessTokenSecret, nonce: getOauthNonce(), timestamp: getOauthTimestamp(), method: "Post"))]
+            
+        let url = URL(string: "https://api.twitter.com/1.1/statuses/update.json??command=INIT&total_bytes=" + totalBytes  + "&media_type=img%2Fpng")!
+        var request = URLRequest(url: url)
+        
+        for (index, (key, value)) in headers.enumerated() {
+            request.addValue(value, forHTTPHeaderField: key)
+        }
+        
+       request.httpMethod = "POST"
+        
+        
+        var mediaId=""
+        // Perform HTTP Request
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                
+                // Check for Error
+                if let error = error {
+                    print("Error took place \(error)")
+                    return
+                }
+         
+                // Convert HTTP Response Data to a String
+                if let data = data, let dataString = String(data: data, encoding: .utf8) {
+                    print("Response data string:\n \(dataString)")
+                    mediaId =  self.handleMediaResponse(json:dataString)
+                }
+        }
+        task.resume()
+        return mediaId
+    }
+        
+    
+    func handleMediaResponse(json:String) -> String {
+       
+        let jsonObj = try? JSONSerialization.jsonObject(with: Data(json.utf8)) as? [String: Any]
+        return jsonObj?["media_id_string"] as! String
+        
+    }
+   
+        
+    func addAltText(mediaId:String, altText:String) {
+       let json = "{\"media_id\":\"" + mediaId + "\", \"alt_text\": {\"text\":\"" + altText + "\"}}"
+    
+        let headers =  [("Accept", "*/*"),
+            ("Host","upload.twitter.com"),
+            ("Content-Type","application/json"),
+            ("Authorization",
+             createOauthHeaderWithBody(body:json,
+                                       url: "https://upload.twitter.com/1.1/media/metadata/create.json",
+                                       apiKey:apiKey,
+                                       apiSecret:apiSecret,
+                                       accessToken: accessToken,
+                                       accessTokenSecret:accessTokenSecret,
+                                       nonce:"getOauthNonce()",
+                                       timestamp:"getOauthTimestamp()",
+                                       method:"Post")),
+                        ("Content-Length", String(json.utf8.count))]
+         
+       let url = URL(string:"https://upload.twitter.com/1.1/media/metadata/create.json")
+        var request = URLRequest(url: url!)
+        
+
+        for (index, (key, value)) in headers.enumerated() {
+            request.addValue(value, forHTTPHeaderField: key)
+        }
+            
+        request.httpMethod = "POST"
+        request.httpBody = Data(json.utf8)
+
+        request.log();
+        
+        // Perform HTTP Request
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                
+                // Check for Error
+                if let error = error {
+                    print("Error took place \(error)")
+                    return
+                }
+         
+                // Convert HTTP Response Data to a String
+                if let data = data, let dataString = String(data: data, encoding: .utf8) {
+                    print("Response data string:\n \(dataString)")
+                }
+        }
+        task.resume()
+    }
+    
+    func createOauthHeaderWithBody(body: String, url: String, apiKey: String, apiSecret: String, accessToken: String, accessTokenSecret: String, nonce: String, timestamp: String, method: String) -> String {
+            
+             
+        let oauthSignatureMethod="HMAC-SHA1"
+        let oauthVersion="1.0"
+        let oauthParameters=[("oauth_body_hash", Data(Insecure.SHA1.hash(data:Data(body.utf8))).base64EncodedString()),
+                       ("oauth_consumer_key", apiKey),
+                       ("oauth_nonce", nonce),
+                       ("oauth_signature_method", oauthSignatureMethod),
+                       ("oauth_timestamp", timestamp),
+                       ("oauth_token", accessToken),
+                       ("oauth_version", oauthVersion)]
+                              
+                              
+                let signingParameters = oauthParameters
+                let oauthSignature=sign(parameters: signingParameters, url: url, consumerSecret: apiSecret, oauthTokenSecret: accessTokenSecret, httpMethod: method)
+                let signedOauthParameters = oauthParameters  + [("oauth_signature", oauthSignature)]
+                return createOauthHeaderString(signedOauthParameters: signedOauthParameters)
+    }
+                 
+             
     func createOAuthHeader(params: [(String,String)], url: String, apiKey: String, apiSecret: String, accessToken: String, accessTokenSecret: String, nonce: String, timestamp: String, method: String) -> String {
         
         

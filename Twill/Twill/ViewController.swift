@@ -12,13 +12,23 @@ class ViewController:  UIViewController, PKCanvasViewDelegate, PKToolPickerObser
     
     @IBOutlet weak var canvasView: PKCanvasView!
     @IBOutlet weak var tweetButton: UIButton!
-    var twitter = TwitterClient();
     
 
     var toolPicker: PKToolPicker!
 
     
     @IBAction func tweet(_ sender: UIButton) {
+        
+        // get api & access tokens/secrets from properties
+        let defaults = UserDefaults.standard
+        let apiKey = defaults.string(forKey: "api_key")
+        let apiSecret = defaults.string(forKey: "api_secret")
+        let accessToken = defaults.string(forKey: "access_token")
+        let accessTokenSecret = defaults.string(forKey: "access_token_secret")
+      
+        let twitter = TwitterClient(apiKey: apiKey!, apiSecret: apiSecret!, accessToken: accessToken!, accessTokenSecret: accessTokenSecret!);
+
+        
         NSLog("tweet")
        // UIImageWriteToSavedPhotosAlbum(canvasView.asImage(),nil,nil,nil);
         twitter.tweet(tweet: "YAIOTCOIYAPL: Yet Another Implementation Of Twitter's Client OAuth In Yet Another Programming Language")

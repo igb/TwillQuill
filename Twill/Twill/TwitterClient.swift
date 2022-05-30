@@ -78,7 +78,9 @@ class TwitterClient {
     
     func tweetImage(image: Data, altText: String, status: String) {
       
+        NSLog("start upload")
         let mediaId=upload(image:image)
+        
         addAltText(mediaId: mediaId, altText:altText)
         let headers=[("Accept", "*/*"),
                 ("Host","api.twitter.com"),
@@ -87,7 +89,7 @@ class TwitterClient {
                  createOAuthHeader(params:[("status", status), ("media_ids", mediaId)], url:"https://api.twitter.com/1.1/statuses/update.json", apiKey:apiKey, apiSecret:apiSecret, accessToken:accessToken, accessTokenSecret:accessTokenSecret, nonce:getOauthNonce(), timestamp:getOauthTimestamp(), method:"Post"))]
               
                  
-                 let url = URL(string: "https://api.twitter.com/1.1/statuses/update.json?status=" + status  + "&media_ids=" + mediaId)!
+        let url = URL(string: "https://api.twitter.com/1.1/statuses/update.json?status=" + self.escapeUri(uri:status)  + "&media_ids=" + mediaId)!
                  var request = URLRequest(url: url)
                  
                  for (index, (key, value)) in headers.enumerated() {
@@ -119,6 +121,7 @@ class TwitterClient {
     
     func upload(image:Data) -> String {
         
+        NSLog("in upload...calling init")
         let mediaId = uploadInit(image:image)
 
 
@@ -131,7 +134,15 @@ class TwitterClient {
     }
     
     func chunk(image:Data, size:Int) -> [String] {
-        return [""]
+        var chunks = [String]();
+        if (image.count < size) {
+            chunks.append(image.base64EncodedString())
+            NSLog(<#T##format: String##String#>, <#T##args: CVarArg...##CVarArg#>)
+        } else {
+            NSLog("image needs to be split...")
+                  
+                  }
+        return chunks
     }
     
     func uploadAppend(chunks:[String], mediaId:String) {
@@ -155,7 +166,7 @@ class TwitterClient {
                                                              ("total_bytes", totalBytes),
                                                              ("media_type", "img/png")], url: "https://upload.twitter.com/1.1/media/upload.json", apiKey: apiKey, apiSecret: apiSecret, accessToken: accessToken, accessTokenSecret: accessTokenSecret, nonce: getOauthNonce(), timestamp: getOauthTimestamp(), method: "Post"))]
             
-        let url = URL(string: "https://api.twitter.com/1.1/statuses/update.json??command=INIT&total_bytes=" + totalBytes  + "&media_type=img%2Fpng")!
+        let url = URL(string: "https://upload.twitter.com/1.1/media/upload.json?command=INIT&total_bytes=" + totalBytes  + "&media_type=img%2Fpng")!
         var request = URLRequest(url: url)
         
         for (index, (key, value)) in headers.enumerated() {
@@ -182,6 +193,9 @@ class TwitterClient {
                 }
         }
         task.resume()
+        while (mediaId == "") {
+            //
+        }
         return mediaId
     }
         

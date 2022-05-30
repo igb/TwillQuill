@@ -31,7 +31,8 @@ class ViewController:  UIViewController, PKCanvasViewDelegate, PKToolPickerObser
         
         NSLog("tweet")
        // UIImageWriteToSavedPhotosAlbum(canvasView.asImage(),nil,nil,nil);
-        twitter.tweet(tweet: "YAIOTCOIYAPL: Yet Another Implementation Of Twitter's Client OAuth In Yet Another Programming Language")
+     //   twitter.tweet(tweet: "YAIOTCOIYAPL: Yet Another Implementation Of Twitter's Client OAuth In Yet Another Programming Language")
+        twitter.tweetImage(image: canvasView.asImage().pngData()!, altText: "A drawing done on an iPad.", status: "scribble scribble")
         
     }
 

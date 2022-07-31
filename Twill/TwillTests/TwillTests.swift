@@ -81,7 +81,36 @@ class TwillTests: XCTestCase {
         let twitter = TwitterClient()
         XCTAssertEqual(twitter.getSigningKey(consumerSecret: "kAcSOqF21Fu85e7zjz7ZN2U4ZRhfV3WpwPAoE3Z7kBw", oauthTokenSecret: "LswwdoUaIvS8ltyTt5jkRh4J50vUPVVHtR2YPi5kE"), "kAcSOqF21Fu85e7zjz7ZN2U4ZRhfV3WpwPAoE3Z7kBw&LswwdoUaIvS8ltyTt5jkRh4J50vUPVVHtR2YPi5kE")
     }
+    
+    
+    /**
+     Functional test of upload to external dummy endpoint. Used in order to validated multipart request generation, image encoding, and signing.
+     */
+    func testImageUpload() throws {
+        let twitter = TwitterClient(uploadUrl:"http://127.0.0.1:5555/postest/diff/SwiftVsErlang/1")
+        
+        let bndl = Bundle(for: type(of: self));
+        NSLog("bundle path: %@",  bndl.bundlePath);
+        print("bundle url: %@",  bndl.bundleURL);
 
+      
+        
+        
+        let url = URL(string:(bndl.bundleURL.absoluteString + "IMG_5303.JPG"))!;
+        print("bundle file url: %@", url.absoluteString);
+
+        let isAccessing = url.startAccessingSecurityScopedResource();
+
+        NSLog("is accessing %d", isAccessing);
+        let imageData = try Data(contentsOf:url);
+
+        twitter.upload(image: imageData);
+        
+        if isAccessing {
+            url.stopAccessingSecurityScopedResource()
+          }
+
+    }
 
     /**
      Tests the construction of the OAuth HTTP Header value string syntax.

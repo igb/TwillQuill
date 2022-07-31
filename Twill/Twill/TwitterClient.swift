@@ -7,6 +7,7 @@
 
 import Foundation
 import CryptoKit
+import Network
 
 class TwitterClient {
     
@@ -14,12 +15,16 @@ class TwitterClient {
     let apiSecret:String;
     let accessToken:String;
     let accessTokenSecret:String;
+    
+    //set this for testing
+    let uploadUrl:String;
 
     init(apiKey:String, apiSecret:String, accessToken:String, accessTokenSecret:String) {
         self.apiKey=apiKey
         self.apiSecret=apiSecret
         self.accessToken=accessToken
         self.accessTokenSecret=accessTokenSecret
+        self.uploadUrl="";
     }
     
     init() {
@@ -27,6 +32,16 @@ class TwitterClient {
         self.apiSecret=""
         self.accessToken=""
         self.accessTokenSecret=""
+        self.uploadUrl="";
+    }
+    
+    
+    init(uploadUrl:String) {
+        self.apiKey=""
+        self.apiSecret=""
+        self.accessToken=""
+        self.accessTokenSecret=""
+        self.uploadUrl=uploadUrl;
     }
     
     func tweet(tweet: String) {
@@ -81,7 +96,7 @@ class TwitterClient {
         NSLog("start upload")
         let mediaId=upload(image:image)
         
-        addAltText(mediaId: mediaId, altText:altText)
+        //addAltText(mediaId: mediaId, altText:altText)
         let headers=[("Accept", "*/*"),
                 ("Host","api.twitter.com"),
                 ("Content-Type","application/x-www-form-urlencoded"),
@@ -98,7 +113,6 @@ class TwitterClient {
                  
                 request.httpMethod = "POST"
 
-                 
                  // Perform HTTP Request
                  let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
                          
@@ -113,9 +127,10 @@ class TwitterClient {
                              print("Response data string:\n \(dataString)")
                          }
                  }
-                 task.resume()
+        //task.resume()
                  
                  
+          
                    
     }
     
@@ -124,20 +139,21 @@ class TwitterClient {
         NSLog("in upload...calling init")
         let mediaId = uploadInit(image:image)
 
+        NSLog("chunking...")
 
         let chunks=chunk(image:image, size:10485760)
+        NSLog("upload append...")
 
         uploadAppend(chunks:chunks, mediaId:mediaId)
-        uploadFinalize(mediaId:mediaId)
+       // uploadFinalize(mediaId:mediaId)
         return mediaId
         
     }
     
-    func chunk(image:Data, size:Int) -> [String] {
-        var chunks = [String]();
+    func chunk(image:Data, size:Int) -> [Data] {
+        var chunks = [Data]();
         if (image.count < size) {
-            chunks.append(image.base64EncodedString())
-            NSLog(<#T##format: String##String#>, <#T##args: CVarArg...##CVarArg#>)
+            chunks.append(image)
         } else {
             NSLog("image needs to be split...")
                   
@@ -145,15 +161,268 @@ class TwitterClient {
         return chunks
     }
     
-    func uploadAppend(chunks:[String], mediaId:String) {
+    func generatePost(headers:[(String, String)], path:String, body:Data) -> NSData {
+        var postData = NSMutableData();
+        
+        var request = "POST " + path + "  HTTP/1.1\r\n";
+        for (key, value) in headers {
+            request += key + ": " + value + "\r\n";
+        }
+        
+        request += "\r\n"
+        
+        postData.append(request.data(using: .utf8) ?? NSMutableData() as Data)
+        postData.append(body)
+        request += body.toString() ?? "";
+        request += "\r\n"
+        postData.append("\r\n".data(using: .utf8) ?? NSMutableData() as Data)
+        
+        NSLog("post string length %d", request.count);
+
+        
+        let requestData = request.data(using: .utf8)
+        
+        NSLog("post data length %d", requestData?.count ?? 0);
+        
+        return postData;
+    }
+    
+    
+    func post(hostname:String, portNumber:UInt16, headers:[(String, String)], path:String, body:Data, secure:Bool, semaphore:DispatchSemaphore) {
+        
+        var postData = generatePost(headers:headers, path: path, body: body);
+        
+        
+        let queue = DispatchQueue(label: "Client connection Q")
+
+        
+        let host = NWEndpoint.Host(hostname)
+        let port = NWEndpoint.Port(rawValue: portNumber)!
+        let tcpOptions = NWProtocolTCP.Options();
+        let tlsOptions = NWProtocolTLS.Options();
+        
+
+        let nwConnection = NWConnection(host: host, port: port, using: secure ? .tls : .tcp);
+        nwConnection.start(queue: queue)
+
+        nwConnection.send(content: postData, completion: .contentProcessed( { error in
+            if let error = error {
+                NSLog("error!! sock")
+                NSLog(error.debugDescription)
+                //self.connectionDidFail(error: error)
+                return
+            }
+            NSLog("worked?! sock");
+                print("connection did send, data: \(body as NSData)")
+        }))
+        
+        
+        nwConnection.receive(minimumIncompleteLength: 1, maximumLength: 65536) { (data, _, isComplete, error) in
+                    if let data = data, !data.isEmpty {
+                        let message = String(data: data, encoding: .utf8)
+                        print("connection did receive, data: \(data as NSData) string: \(message ?? "-" )")
+                    }
+                    if isComplete {
+                        NSLog("post complete");
+                        semaphore.signal();
+                    } else if let error = error {
+                        NSLog(error.debugDescription);
+                        semaphore.signal();
+                    } else {
+                        NSLog("shrug");
+                        semaphore.signal();
+                    }
+                }
+        
+        semaphore.signal();
+        
+        
+        
+    }
+    
+    func uploadAppend(chunks:[Data], mediaId:String) {
+        
+        
+        
+        let decodedData = String(decoding: chunks[0], as: UTF8.self)
+        NSLog("lnght %d", decodedData.count)
+        NSLog("olnght %d", chunks[0].count)
+        
+        let params = [("segment_index", String(0).data(using: .utf8) ?? NSMutableData() as Data ),
+              ("media_id", mediaId.data(using: .utf8) ?? NSMutableData() as Data),
+              ("command", "APPEND".data(using: .utf8) ?? NSMutableData() as Data),
+              ("media", chunks[0])
+        ]
+        
+        let urlString = uploadUrl.count > 0 ? uploadUrl :  "https://upload.twitter.com/1.1/media/upload.json"
+
+
+        let multiPartBody=generateMultipartBody(params:params, boundary:"00Twurl788615393766630399lruwT99")
+        
+
+        let contentLength = String(multiPartBody.toString()?.count ?? 0);
+        NSLog("content length %@", contentLength)
+
+        let headers =  [("Accept", "*/*"),
+                        ("Host", "upload.twitter.com"),
+                        ("Content-Type", "multipart/form-data; boundary=\"00Twurl788615393766630399lruwT99\""),
+                        ("Content-Length", contentLength),
+                        ("Authorization",
+                         createOAuthHeader(params:[], url:urlString, apiKey: apiKey, apiSecret: apiSecret, accessToken: accessToken, accessTokenSecret: accessTokenSecret, nonce: getOauthNonce(),timestamp: getOauthTimestamp(),method: "Post"))]
+
+        
+        
+        
+        
+        
+        
+        
+       
+      /*  NSLog("socket 2me")
+
+        //   post(hostname: "127.0.0.1", portNumber: 8080, headers: headers, path: "/postest/diff/SwiftVsErlang/2", body: multiPartBody, secure: false)
+        
+        let semaphore = DispatchSemaphore(value: 0)
+
+        post(hostname: "upload.twitter.com", portNumber: 443, headers: headers, path: "/1.1/media/upload.json", body: multiPartBody, secure: true, semaphore:semaphore)
+    
+        semaphore.wait()
+       */
+
+    
+      
+        let url = URL(string:urlString)
+        var request = URLRequest(url: url!)
+
+
+        
+             
+        request.allHTTPHeaderFields = headersDict(parameters: headers);
+        
+         request.httpMethod = "POST"
+        request.httpBody = multiPartBody;
+
+        // request.log();
+        let semaphore = DispatchSemaphore(value: 0)
+
+         // Perform HTTP Request
+         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                 
+                 // Check for Error
+                 if let error = error {
+                     print("Error took place \(error)")
+                     semaphore.signal()
+
+                     return
+                 }
+          
+                 // Convert HTTP Response Data to a String
+                 if let data = data, let dataString = String(data: data, encoding: .utf8) {
+                     print("Append Response data string:\n \(dataString)")
+                     print("Append Response resp string:\n \(response?.description)")
+                     
+                     semaphore.signal()
+
+
+                 }
+         }
+         task.resume()
+            
+        semaphore.wait()
+
         
     }
     
     func uploadFinalize(mediaId:String) {
         
+      
+            
+            let headers = [("Accept", "*/*"), ("Host", "upload.twitter.com"), ("Content-Type", "application/x-www-form-urlencoded"), ("Authorization", createOAuthHeader(params:[("command", "FINALIZE"), ("media_id", mediaId)], url:"https://upload.twitter.com/1.1/media/upload.json", apiKey:apiKey, apiSecret:apiSecret, accessToken:accessToken, accessTokenSecret:accessTokenSecret, nonce:getOauthNonce(), timestamp:getOauthTimestamp(), method:"Post"))]
+
+
+        let urlString = "https://upload.twitter.com/1.1/media/upload.json?command=FINALIZE&media_id=" + mediaId
+        let url = URL(string:urlString)
+        var request = URLRequest(url: url!)
+        request.httpMethod = "POST"
+
+
+         for (index, (key, value)) in headers.enumerated() {
+             request.addValue(value, forHTTPHeaderField: key)
+         }
+        
+        
+        request.log();
+       let semaphore = DispatchSemaphore(value: 0)
+
+        // Perform HTTP Request
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                
+                // Check for Error
+                if let error = error {
+                    print("Error took place \(error)")
+                    semaphore.signal()
+
+                    return
+                }
+         
+                // Convert HTTP Response Data to a String
+                if let data = data, let dataString = String(data: data, encoding: .utf8) {
+                    print("Finalize Response data string:\n \(dataString)")
+                    print("FInalise Response resp string:\n \(response?.description)")
+                    
+                    semaphore.signal()
+
+
+                }
+        }
+        task.resume()
+           
+       semaphore.wait()
+        
+        
+        
+        
     }
     
+    fileprivate func stringToData(string: String) -> Data {
+        return string.data(using: .utf8) ?? NSMutableData() as Data;
+    }
     
+    func generateMultipartBody(params:[(String, Data)], boundary:String) -> Data {
+        
+        
+        
+        let part = NSMutableData();
+        for (_, (name, value)) in params.enumerated() {
+            part.append(stringToData(string:"--"));
+            part.append(stringToData(string:boundary));
+            part.append(stringToData(string:"\r\nContent-Disposition: form-data; name=\""));
+            part.append(stringToData(string:name));
+            part.append(stringToData(string:"\""));
+
+            if (name == "media") {
+                part.append(stringToData(string:"; filename=\"foo1.png\"\nContent-Type: application/octet-stream"))
+            }
+            
+            part.append(stringToData(string:"\r\n\r\n"));
+           
+            part.append(value);
+               
+            part.append(stringToData(string:"\r\n"));
+            NSLog("PART %d", value.count);
+        }
+        
+        part.append(stringToData(string:"--"));
+        part.append(stringToData(string:boundary));
+        part.append(stringToData(string:"--\r\n"));
+       
+        return part as Data;
+
+        
+        
+        
+    }
+
     
     func uploadInit(image:Data) -> String {
         let totalBytes =  String(image.count)
@@ -166,9 +435,17 @@ class TwitterClient {
                                                              ("total_bytes", totalBytes),
                                                              ("media_type", "img/png")], url: "https://upload.twitter.com/1.1/media/upload.json", apiKey: apiKey, apiSecret: apiSecret, accessToken: accessToken, accessTokenSecret: accessTokenSecret, nonce: getOauthNonce(), timestamp: getOauthTimestamp(), method: "Post"))]
             
-        let url = URL(string: "https://upload.twitter.com/1.1/media/upload.json?command=INIT&total_bytes=" + totalBytes  + "&media_type=img%2Fpng")!
-        var request = URLRequest(url: url)
         
+        if (uploadUrl.count > 0) {
+            return "FAKE-MEDIA-ID";
+        }
+        
+        let url = URL(string: "https://upload.twitter.com/1.1/media/upload.json?command=INIT&total_bytes=" + totalBytes  + "&media_type=img%2Fpng")!
+        
+        
+        
+        var request = URLRequest(url: url)
+        request.log()
         for (index, (key, value)) in headers.enumerated() {
             request.addValue(value, forHTTPHeaderField: key)
         }
@@ -188,13 +465,13 @@ class TwitterClient {
          
                 // Convert HTTP Response Data to a String
                 if let data = data, let dataString = String(data: data, encoding: .utf8) {
-                    print("Response data string:\n \(dataString)")
+                    print("Init Response data string:\n \(dataString)")
                     mediaId =  self.handleMediaResponse(json:dataString)
                 }
         }
         task.resume()
         while (mediaId == "") {
-            //
+            //di i need this?/
         }
         return mediaId
     }
@@ -250,7 +527,7 @@ class TwitterClient {
          
                 // Convert HTTP Response Data to a String
                 if let data = data, let dataString = String(data: data, encoding: .utf8) {
-                    print("Response data string:\n \(dataString)")
+                    print("alt Response data string:\n \(dataString)")
                 }
         }
         task.resume()
@@ -389,6 +666,17 @@ class TwitterClient {
         let longSeconds = CUnsignedLongLong(seconds)
         return String(longSeconds)
         
+    }
+    
+    
+    func headersDict(parameters:[(String, String)]) -> [String: String] {
+        var headersDict = [String: String]();
+        
+        for (key, value) in parameters {
+            headersDict.updateValue(value, forKey: key);
+        }
+        
+        return headersDict;
     }
     
     

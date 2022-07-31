@@ -19,6 +19,8 @@
 		CC5F4AF828428D53001EFECC /* TwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5F4AF728428D53001EFECC /* TwitterClient.swift */; };
 		CC5F4AF928428D53001EFECC /* TwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5F4AF728428D53001EFECC /* TwitterClient.swift */; };
 		CCB825F12843FA2100CECA4E /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CCB825F02843FA2100CECA4E /* Settings.bundle */; };
+		CCDB538F2866BCD600F3851D /* test.txt in Resources */ = {isa = PBXBuildFile; fileRef = CCDB538E2866BCD600F3851D /* test.txt */; };
+		CCDB53912866BF1600F3851D /* IMG_5303.JPG in Resources */ = {isa = PBXBuildFile; fileRef = CCDB53902866BF1600F3851D /* IMG_5303.JPG */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,8 @@
 		CC5F4AEA28419AB3001EFECC /* TwillUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwillUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		CC5F4AF728428D53001EFECC /* TwitterClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterClient.swift; sourceTree = "<group>"; };
 		CCB825F02843FA2100CECA4E /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		CCDB538E2866BCD600F3851D /* test.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = test.txt; sourceTree = SOURCE_ROOT; };
+		CCDB53902866BF1600F3851D /* IMG_5303.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_5303.JPG; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +124,8 @@
 		CC5F4ADD28419AB3001EFECC /* TwillTests */ = {
 			isa = PBXGroup;
 			children = (
+				CCDB53902866BF1600F3851D /* IMG_5303.JPG */,
+				CCDB538E2866BCD600F3851D /* test.txt */,
 				CC5F4ADE28419AB3001EFECC /* TwillTests.swift */,
 			);
 			path = TwillTests;
@@ -249,6 +255,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCDB53912866BF1600F3851D /* IMG_5303.JPG in Resources */,
+				CCDB538F2866BCD600F3851D /* test.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

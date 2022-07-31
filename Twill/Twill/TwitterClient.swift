@@ -498,8 +498,8 @@ class TwitterClient {
                                        apiSecret:apiSecret,
                                        accessToken: accessToken,
                                        accessTokenSecret:accessTokenSecret,
-                                       nonce:"getOauthNonce()",
-                                       timestamp:"getOauthTimestamp()",
+                                       nonce:getOauthNonce(),
+                                       timestamp:getOauthTimestamp(),
                                        method:"Post")),
                         ("Content-Length", String(json.utf8.count))]
          

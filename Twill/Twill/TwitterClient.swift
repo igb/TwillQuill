@@ -96,7 +96,7 @@ class TwitterClient {
         NSLog("start upload")
         let mediaId=upload(image:image)
         
-        //addAltText(mediaId: mediaId, altText:altText)
+        addAltText(mediaId: mediaId, altText:altText)
         let headers=[("Accept", "*/*"),
                 ("Host","api.twitter.com"),
                 ("Content-Type","application/x-www-form-urlencoded"),
@@ -127,7 +127,7 @@ class TwitterClient {
                              print("Response data string:\n \(dataString)")
                          }
                  }
-        //task.resume()
+        task.resume()
                  
                  
           
@@ -145,7 +145,7 @@ class TwitterClient {
         NSLog("upload append...")
 
         uploadAppend(chunks:chunks, mediaId:mediaId)
-       // uploadFinalize(mediaId:mediaId)
+        uploadFinalize(mediaId:mediaId)
         return mediaId
         
     }

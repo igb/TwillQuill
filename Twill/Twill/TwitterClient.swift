@@ -278,16 +278,7 @@ class TwitterClient {
         
         
        
-      /*  NSLog("socket 2me")
-
-        //   post(hostname: "127.0.0.1", portNumber: 8080, headers: headers, path: "/postest/diff/SwiftVsErlang/2", body: multiPartBody, secure: false)
-        
-        let semaphore = DispatchSemaphore(value: 0)
-
-        post(hostname: "upload.twitter.com", portNumber: 443, headers: headers, path: "/1.1/media/upload.json", body: multiPartBody, secure: true, semaphore:semaphore)
     
-        semaphore.wait()
-       */
 
     
       

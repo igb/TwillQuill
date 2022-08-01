@@ -10,6 +10,12 @@
 		CC43C88E2896F60200EA5DF9 /* IMG_4238.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CC43C88D2896F60200EA5DF9 /* IMG_4238.jpg */; };
 		CC43C88F2896F60200EA5DF9 /* IMG_4238.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CC43C88D2896F60200EA5DF9 /* IMG_4238.jpg */; };
 		CC43C8902896F60200EA5DF9 /* IMG_4238.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CC43C88D2896F60200EA5DF9 /* IMG_4238.jpg */; };
+		CC43C89E28971A1700EA5DF9 /* DrawingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC43C89D28971A1700EA5DF9 /* DrawingViewController.swift */; };
+		CC43C89F28971A1700EA5DF9 /* DrawingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC43C89D28971A1700EA5DF9 /* DrawingViewController.swift */; };
+		CC43C8A028971A1700EA5DF9 /* DrawingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC43C89D28971A1700EA5DF9 /* DrawingViewController.swift */; };
+		CC43C8A22897311D00EA5DF9 /* TweetModalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC43C8A12897311D00EA5DF9 /* TweetModalController.swift */; };
+		CC43C8A32897311D00EA5DF9 /* TweetModalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC43C8A12897311D00EA5DF9 /* TweetModalController.swift */; };
+		CC43C8A42897311D00EA5DF9 /* TweetModalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC43C8A12897311D00EA5DF9 /* TweetModalController.swift */; };
 		CC5F4AC828419AB1001EFECC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5F4AC728419AB1001EFECC /* AppDelegate.swift */; };
 		CC5F4ACA28419AB1001EFECC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5F4AC928419AB1001EFECC /* SceneDelegate.swift */; };
 		CC5F4ACC28419AB1001EFECC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5F4ACB28419AB1001EFECC /* ViewController.swift */; };
@@ -45,6 +51,8 @@
 
 /* Begin PBXFileReference section */
 		CC43C88D2896F60200EA5DF9 /* IMG_4238.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_4238.jpg; sourceTree = "<group>"; };
+		CC43C89D28971A1700EA5DF9 /* DrawingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingViewController.swift; sourceTree = "<group>"; };
+		CC43C8A12897311D00EA5DF9 /* TweetModalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetModalController.swift; sourceTree = "<group>"; };
 		CC5F4AC428419AB1001EFECC /* Twill.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twill.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC5F4AC728419AB1001EFECC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC5F4AC928419AB1001EFECC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -122,6 +130,8 @@
 				CC5F4AD228419AB2001EFECC /* LaunchScreen.storyboard */,
 				CC5F4AD528419AB2001EFECC /* Info.plist */,
 				CC5F4AF728428D53001EFECC /* TwitterClient.swift */,
+				CC43C89D28971A1700EA5DF9 /* DrawingViewController.swift */,
+				CC43C8A12897311D00EA5DF9 /* TweetModalController.swift */,
 			);
 			path = Twill;
 			sourceTree = "<group>";
@@ -283,9 +293,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC5F4AF828428D53001EFECC /* TwitterClient.swift in Sources */,
+				CC43C8A22897311D00EA5DF9 /* TweetModalController.swift in Sources */,
 				CC5F4ACC28419AB1001EFECC /* ViewController.swift in Sources */,
 				CC5F4AC828419AB1001EFECC /* AppDelegate.swift in Sources */,
 				CC5F4ACA28419AB1001EFECC /* SceneDelegate.swift in Sources */,
+				CC43C89E28971A1700EA5DF9 /* DrawingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,7 +306,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC5F4AF928428D53001EFECC /* TwitterClient.swift in Sources */,
+				CC43C89F28971A1700EA5DF9 /* DrawingViewController.swift in Sources */,
 				CC5F4ADF28419AB3001EFECC /* TwillTests.swift in Sources */,
+				CC43C8A32897311D00EA5DF9 /* TweetModalController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,7 +317,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC5F4AE928419AB3001EFECC /* TwillUITests.swift in Sources */,
+				CC43C8A028971A1700EA5DF9 /* DrawingViewController.swift in Sources */,
 				CC5F4AEB28419AB3001EFECC /* TwillUITestsLaunchTests.swift in Sources */,
+				CC43C8A42897311D00EA5DF9 /* TweetModalController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

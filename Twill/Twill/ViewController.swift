@@ -12,13 +12,60 @@ class ViewController:  UIViewController, PKCanvasViewDelegate, PKToolPickerObser
     
     @IBOutlet weak var canvasView: PKCanvasView!
     @IBOutlet weak var tweetButton: UIButton!
+    @IBOutlet weak var newButton: UIButton!
+
     
 
     var toolPicker: PKToolPicker!
 
+    @IBAction func save(_ sender: UIButton) {
+    }
+    
+    @IBAction func new(_ sender: UIButton) {
+        canvasView.drawing = PKDrawing();
+        canvasView.delegate = self;
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.incrementCurrentIndex();
+
+    }
+
+    @IBAction func swipeHandler(_ gestureRecognizer : UISwipeGestureRecognizer) {
+        if gestureRecognizer.state == .ended {
+            // Perform action.
+        }
+    }
+    
+    
+    func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
+        NSLog("drawing changed!");
+        var drawing = canvasView.drawing.dataRepresentation();
+        var fileManager: FileManager = FileManager.default;
+        var url = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first;
+        do {
+            
+            try  drawing.write(to: url!.appendingPathComponent("drawing-" + appDelegate.getCurrentIndex()));
+        } catch {
+            NSLog("writing error");
+        }
+        NSLog("wrote file");
+
+    }
+    
+   
+    
+    
+    
+
+    
+    
     
     @IBAction func tweet(_ sender: UIButton) {
         
+        
+        performSegue(withIdentifier: "tweet", sender: self)
         // get api & access tokens/secrets from properties
         let defaults = UserDefaults.standard
         let apiKey = defaults.string(forKey: "api_key")
@@ -32,7 +79,7 @@ class ViewController:  UIViewController, PKCanvasViewDelegate, PKToolPickerObser
         NSLog("tweet")
        // UIImageWriteToSavedPhotosAlbum(canvasView.asImage(),nil,nil,nil);
      //   twitter.tweet(tweet: "YAIOTCOIYAPL: Yet Another Implementation Of Twitter's Client OAuth In Yet Another Programming Language")
-        twitter.tweetImage(image: canvasView.asImage().pngData()!, altText: "A drawing done on an iPad.", status: "scribble scribble")
+   //     twitter.tweetImage(image: canvasView.asImage().pngData()!, altText: "A drawing done on an iPad.", status: "scribble scribble")
         
     }
 
@@ -45,6 +92,8 @@ class ViewController:  UIViewController, PKCanvasViewDelegate, PKToolPickerObser
     
     /// Set up the drawing initially.
        override func viewWillAppear(_ animated: Bool) {
+           let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
            super.viewWillAppear(animated)
            navigationController?.setNavigationBarHidden(true, animated: animated)
 
@@ -71,6 +120,10 @@ class ViewController:  UIViewController, PKCanvasViewDelegate, PKToolPickerObser
            toolPicker.addObserver(canvasView)
            toolPicker.addObserver(self)
         //   updateLayout(for: toolPicker)
+           
+          
+           canvasView.drawing = appDelegate.getPKDrawing(id: appDelegate.getCurrentIndex());
+
            canvasView.becomeFirstResponder()
        }
 
@@ -109,5 +162,9 @@ extension UIView {
             return UIImage(cgImage: image!.cgImage!)
         }
     }
+    
+    
+   
+   
 }
 

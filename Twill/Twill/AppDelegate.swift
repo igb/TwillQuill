@@ -45,6 +45,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         index = index + 1;
     }
     
+    func setCurrentIndex(_ newIndex: String) {
+        index = Int(newIndex) ?? 1;
+    }
+    
     func getMostRecentIndex() -> Int {
         return getDrawingId(drawingName:sortDocs(drawings:listDrawings())[0]);
     }

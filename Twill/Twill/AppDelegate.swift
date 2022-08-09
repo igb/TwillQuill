@@ -103,6 +103,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
+    func getPKDrawing(id:Int) -> PKDrawing {
+        return getPKDrawing(id:(id as NSNumber).stringValue);
+    }
+
     func getPKDrawing(id:String) -> PKDrawing {
         var pkDrawing = PKDrawing();
      
@@ -123,6 +127,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return pkDrawing;
     }
 
+    
+    func deletePKDrawing(id:String) {
+        let fileManager: FileManager = FileManager.default;
+        var url = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first;
+        var file = url!.appendingPathComponent("drawing-" + id)
+        do {
+                 try FileManager.default.removeItem(at: file)
+           } catch {
+             print("File Deletion Failed: \(error.localizedDescription)")
+           }
+
+        
+        
+    }
 
 }
 

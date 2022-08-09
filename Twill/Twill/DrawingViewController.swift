@@ -34,8 +34,18 @@ class DrawingViewController:  UIViewController, UICollectionViewDataSource,  UIC
         
         NSLog( "index path " + (indexPath.item as NSNumber).stringValue);
         print(indexPath)
+        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        var pkDrawing = appDelegate.getPKDrawing(id:((indexPath.item as NSNumber).stringValue));
+        
+        // GET SORTED LIST OF DRAWINGS
+
+        var drawings = appDelegate.sortDocs(drawings:(appDelegate.listDrawings()));
+        for drawing in drawings {
+            print("drawing:" + drawing)
+        }
+        
+        var drawingID = appDelegate.getDrawingId(drawingName:drawings[(indexPath.item as NSNumber).intValue]);
+        var pkDrawing = appDelegate.getPKDrawing(id:drawingID);
         let imageview:UIImageView=UIImageView(frame: CGRect(x: 50, y: 50, width: self.view.frame.width-200, height: 50))
 
         var image = pkDrawing.image(from: pkDrawing.bounds, scale: 1);
@@ -58,9 +68,15 @@ class DrawingViewController:  UIViewController, UICollectionViewDataSource,  UIC
         
     }
     
-    func deleteHandler(alert: UIAlertAction!) {
-        print("delete called");
-    }
+    func deleteHandler(indexPath: IndexPath)->(_: UIAlertAction?)->() {
+        return { alertAction in
+            print("delete called");
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.deletePKDrawing(id:(indexPath.item as NSNumber).stringValue)
+            print("delete worked?");
+            self.collection.reloadData();
+            }
+          }
     
     @objc func long(_ sender:  UILongPressGestureRecognizer)
     {
@@ -73,7 +89,7 @@ class DrawingViewController:  UIViewController, UICollectionViewDataSource,  UIC
                     alertActionCell.popoverPresentationController?.sourceView=sender.view;
 
                     // Configure Remove Item Action
-                    let deleteAction = UIAlertAction(title: "Delete", style: .default, handler:deleteHandler)
+                    let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler:deleteHandler(indexPath: indexPath!))
 
                     // Configure Cancel Action Sheet
                     let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
@@ -83,7 +99,7 @@ class DrawingViewController:  UIViewController, UICollectionViewDataSource,  UIC
                     alertActionCell.addAction(deleteAction)
                    // alertActionCell.addAction(cancelAction)
                     self.present(alertActionCell, animated: true, completion: nil)
-
+                        
                 }
 
     }

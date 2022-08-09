@@ -178,7 +178,7 @@ em ipsu lorem ipsu lorem ipsu lorem ipsu lorem ipsu lorem ipsu lorem lorem ipsu\
             <objects>
                 <viewController id="h7t-lE-LRg" customClass="DrawingViewController" customModule="Twill" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8Q5-jF-sBx">
-                        <rect key="frame" x="0.0" y="0.0" width="704" height="995"/>
+                        <rect key="frame" x="0.0" y="0.0" width="704" height="995.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Po1-ES-dX8">

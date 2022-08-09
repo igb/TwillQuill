@@ -22,12 +22,16 @@ class DrawingViewController:  UIViewController, UICollectionViewDataSource,  UIC
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DrawingCell", for: indexPath) as! DrawingCustomCell
 
-      //  cell.backgroundColor = UIColor.blue
+        cell.layer.borderWidth = 1
+    cell.layer.borderColor = CGColor.init(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
         
-     //   cell.layer.cornerRadius = 3.0
-        cell.layer.borderWidth = 10
-    cell.layer.borderColor = CGColor.init(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
+        // ADDING TAP GESTURE HANDLER TO SELECT DRAWING
         cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action:#selector(tap(_:))));
+        
+        // ADDING LONG PRESS GESTURE HANDLER TO ENABLE DELETE PROMPT
+
+        cell.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action:#selector(long(_:))));
+        
         NSLog( "index path " + (indexPath.item as NSNumber).stringValue);
         print(indexPath)
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -54,24 +58,46 @@ class DrawingViewController:  UIViewController, UICollectionViewDataSource,  UIC
         
     }
     
+    func deleteHandler(alert: UIAlertAction!) {
+        print("delete called");
+    }
     
-  
+    @objc func long(_ sender:  UILongPressGestureRecognizer)
+    {
+        let location = sender.location(in: self.collection)
+        let indexPath = self.collection?.indexPathForItem(at: location)
+        //        let cell = self.collection?.cellForItem(at: indexPath!)
+                if indexPath != nil
+                {
+                    let alertActionCell = UIAlertController(title: "Remove Drawing", message: "Do you want to delete this drawing?", preferredStyle: .actionSheet)
+                    alertActionCell.popoverPresentationController?.sourceView=sender.view;
+
+                    // Configure Remove Item Action
+                    let deleteAction = UIAlertAction(title: "Delete", style: .default, handler:deleteHandler)
+
+                    // Configure Cancel Action Sheet
+                    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
+                        print("Cancel actionsheet")
+                    })
+
+                    alertActionCell.addAction(deleteAction)
+                   // alertActionCell.addAction(cancelAction)
+                    self.present(alertActionCell, animated: true, completion: nil)
+
+                }
+
+    }
 
     @objc func tap(_ sender: UITapGestureRecognizer) {
-        print("tapped!");
-        print(sender);
         let location = sender.location(in: self.collection)
-        print(location)
 
       // let location = sender.location(in: self.collectionView)
        let indexPath = self.collection.indexPathForItem(at: location)
 
        if let index = indexPath {
            var selected = (index.item as NSNumber).stringValue;
-           print("Got clicked on index: \((index.item as NSNumber).stringValue)!")
            let appDelegate = UIApplication.shared.delegate as! AppDelegate
            appDelegate.setCurrentIndex(selected);
-           
            performSegue(withIdentifier: "selected", sender: self)
 
            

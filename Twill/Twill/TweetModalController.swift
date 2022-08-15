@@ -22,6 +22,11 @@ class TweetModalController:  UIViewController, UITextViewDelegate {
     @IBOutlet weak var tcc: UILabel!
     @IBOutlet weak var acc: UILabel!
     @IBOutlet weak var tweet: UIButton!
+    @IBOutlet weak var threadLabel: UILabel!
+    @IBOutlet weak var threadButton: UISwitch!
+
+    
+
 
 
 
@@ -41,9 +46,16 @@ class TweetModalController:  UIViewController, UITextViewDelegate {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
         let pkDrawing = appDelegate.getPKDrawing(id: appDelegate.getCurrentIndex());
+        let image = pkDrawing.image(from: pkDrawing.bounds, scale: 1).withBackground(color: UIColor.white)!;
+            
+            //.pngData()!;
+        
+        let pngData = image.pngData()!;
 
-        twitter.tweetImage(image: pkDrawing.image(from: pkDrawing.bounds, scale: 1).pngData()!, altText: altText.text, status: tweetText.text);
+        var tweetId = twitter.tweetImage(image: pngData, altText: altText.text, status: tweetText.text);
         NSLog("tweeted...")
+        NSLog("tweet id is . . . " + tweetId)
+        appDelegate.addTweetId(tweetId: tweetId, drawingId: appDelegate.getCurrentIndex());
         performSegue(withIdentifier: "cancel", sender: self)
 
 
@@ -126,9 +138,13 @@ class TweetModalController:  UIViewController, UITextViewDelegate {
 
            
            let pkDrawing = appDelegate.getPKDrawing(id: appDelegate.getCurrentIndex());
+        
            
-           let nsImage = pkDrawing.image(from: pkDrawing.bounds, scale: 1);
+           let nsImage = pkDrawing.image(from: pkDrawing.bounds, scale: 1) ;
+           
+           
            image.image=nsImage;
+           image.backgroundColor=UIColor.lightGray;
              
            
            
@@ -144,8 +160,34 @@ class TweetModalController:  UIViewController, UITextViewDelegate {
            
            acc.text="";
            
-           appDelegate.listDrawings();
+           var tweetId = appDelegate.getTweetId(drawingId: appDelegate.getCurrentIndex());
+           
+           NSLog("tweet id: " + tweetId)
+           if (tweetId.count > 2) {
+               self.threadButton.isHidden=false;
+               self.threadLabel.isHidden=false;
+           }
+           
        }
     
+}
+
+extension UIImage {
+
+  func withBackground(color: UIColor) -> UIImage? {
+    var image: UIImage?
+    UIGraphicsBeginImageContextWithOptions(size, false, scale)
+    let imageRect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+    if let context = UIGraphicsGetCurrentContext() {
+      context.setFillColor(color.cgColor)
+      context.fill(imageRect)
+      draw(in: imageRect, blendMode: .normal, alpha: 1.0)
+      image = UIGraphicsGetImageFromCurrentImageContext()
+      UIGraphicsEndImageContext()
+      return image
+    }
+    return nil
+  }
+
 }
 

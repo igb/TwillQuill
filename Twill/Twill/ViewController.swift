@@ -26,6 +26,7 @@ class ViewController:  UIViewController, PKCanvasViewDelegate, PKToolPickerObser
         appDelegate.incrementCurrentIndex();
 
         canvasView.drawing = PKDrawing();
+        canvasView.backgroundColor = UIColor.lightGray
         canvasView.delegate = self;
         
 
@@ -52,7 +53,8 @@ class ViewController:  UIViewController, PKCanvasViewDelegate, PKToolPickerObser
             NSLog("writing error");
         }
         NSLog("wrote file " + "drawing-" + appDelegate.getCurrentIndex());
-
+       
+        
     }
     
    
@@ -105,7 +107,7 @@ class ViewController:  UIViewController, PKCanvasViewDelegate, PKToolPickerObser
            canvasView.alwaysBounceVertical = true
            
            canvasView.frame(forAlignmentRect: self.view.frame)
-
+           canvasView.backgroundColor = UIColor.lightGray
            
            // Set up the tool picker
            if #available(iOS 14.0, *) {
@@ -167,5 +169,46 @@ extension UIView {
     
    
    
+}
+
+/// https://stackoverflow.com/questions/38343186/write-extend-file-attributes-swift-example
+extension URL {
+
+    /// Get extended attribute.
+    func extendedAttribute(forName name: String) throws -> Data  {
+        let data = try self.withUnsafeFileSystemRepresentation { fileSystemPath -> Data in
+
+            // Determine attribute size:
+            let length = getxattr(fileSystemPath, name, nil, 0, 0, 0)
+            if (length > 0) {
+                // Create buffer with required size:
+                var data = Data(count: length)
+
+                // Retrieve attribute:
+                let result =  data.withUnsafeMutableBytes { [count = data.count] in
+                getxattr(fileSystemPath, name, $0.baseAddress, count, 0, 0)
+                }
+                return data
+            } else {
+                return "".data(using: .utf8)!;
+            }
+        }
+            
+    
+        return data
+
+    }
+    
+    /// set extended attribute.
+
+    func setExtendedAttribute(data: Data, forName name: String) throws {
+
+            try self.withUnsafeFileSystemRepresentation { fileSystemPath in
+                let result = data.withUnsafeBytes {
+                    setxattr(fileSystemPath, name, $0.baseAddress, data.count, 0, 0)
+                }
+                NSLog("wrote ext attr: " + (result >= 0).description);
+            }
+        }
 }
 

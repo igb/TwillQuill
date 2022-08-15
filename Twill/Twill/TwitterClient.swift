@@ -91,8 +91,11 @@ class TwitterClient {
     
     
     
-    func tweetImage(image: Data, altText: String, status: String) {
-      
+    func tweetImage(image: Data, altText: String, status: String) -> String {
+        
+        let semaphore = DispatchSemaphore(value: 0)
+
+        var tweetId = "";
         NSLog("start upload")
         let mediaId=upload(image:image)
         
@@ -125,13 +128,30 @@ class TwitterClient {
                          // Convert HTTP Response Data to a String
                          if let data = data, let dataString = String(data: data, encoding: .utf8) {
                              print("Response data string:\n \(dataString)")
+                             tweetId = self.extractTweetId(tweet:data)
+                             print("Tweet ID:\n \(tweetId)")
+
+                             semaphore.signal();
                          }
                  }
         task.resume()
+        semaphore.wait();
+
                  
-                 
+        return tweetId;
           
                    
+    }
+    
+    func extractTweetId(tweet:Data)-> String {
+        let json = try? JSONSerialization.jsonObject(with: tweet, options: [])
+        if let dictionary = json as? [String: Any] {
+            if let tweetId = dictionary["id_str"] as? String {
+                return tweetId;
+            }
+        }
+        return "";
+        
     }
     
     func upload(image:Data) -> String {

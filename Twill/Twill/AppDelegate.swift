@@ -84,6 +84,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return sortedDrawings;
     }
     
+    
+    func getTweetId(drawingId:String) -> String {
+        var tweetId = "";
+        let fileManager: FileManager = FileManager.default;
+        var url = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first;
+       
+        do {
+            
+            var drawingUrl = url!.appendingPathComponent("drawing-" + drawingId)
+            try tweetId = String(decoding:(drawingUrl.extendedAttribute(forName: "tweetId")), as: UTF8.self)
+        
+            NSLog("got tweet id " + tweetId + "  for " + "drawing-" + drawingId)
+            NSLog("got tweet id " + tweetId + "  for url " + drawingUrl.absoluteString )
+
+        } catch {
+            NSLog("get tweet id  error");
+        }
+        return tweetId;
+    }
+    
+    func addTweetId(tweetId:String, drawingId:String) {
+        var id = Int(drawingId) ?? 0;
+        let fileManager: FileManager = FileManager.default;
+        var url = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first;
+       
+        do {
+            
+            var drawingUrl = url!.appendingPathComponent("drawing-" + drawingId)
+            try drawingUrl.setExtendedAttribute(data: tweetId.data(using: .utf8)!, forName: "tweetId")
+        
+            NSLog("added tweetd id to " + "drawing-" + drawingId)
+        } catch {
+            NSLog("add tweet id  error");
+        }
+        
+    }
     func listDrawings() -> [String] {
         
         var docs = NSMutableArray();

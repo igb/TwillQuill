@@ -42,15 +42,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func incrementCurrentIndex() {
-        index = index + 1;
+        if (!self.listDrawings().isEmpty) {
+            
+            var latestDocId = self.getDrawingId(drawingName:self.sortDocs(drawings:self.listDrawings())[0]);
+            index = latestDocId + 1;
+        } else {
+            index = index + 1;
+        }
     }
     
     func setCurrentIndex(_ newIndex: String) {
         index = Int(newIndex) ?? 1;
     }
     
+    func setCurrentIndex(_ newIndex: Int) {
+        index = newIndex;
+    }
+    
     func getMostRecentIndex() -> Int {
-        return getDrawingId(drawingName:sortDocs(drawings:listDrawings())[0]);
+        if (!self.listDrawings().isEmpty) {
+            return getDrawingId(drawingName:sortDocs(drawings:listDrawings())[0]);
+        } else {
+            return index;
+        }
     }
     
     func getDrawingId(drawingName:String)-> Int {
@@ -125,6 +139,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         return pkDrawing;
+    }
+
+    
+    func deletePKDrawing(id:Int) {
+        deletePKDrawing(id:(id as NSNumber).stringValue);
     }
 
     

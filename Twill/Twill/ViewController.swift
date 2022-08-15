@@ -22,11 +22,12 @@ class ViewController:  UIViewController, PKCanvasViewDelegate, PKToolPickerObser
     }
     
     @IBAction func new(_ sender: UIButton) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.incrementCurrentIndex();
+
         canvasView.drawing = PKDrawing();
         canvasView.delegate = self;
         
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.incrementCurrentIndex();
 
     }
 
@@ -50,7 +51,7 @@ class ViewController:  UIViewController, PKCanvasViewDelegate, PKToolPickerObser
         } catch {
             NSLog("writing error");
         }
-        NSLog("wrote file");
+        NSLog("wrote file " + "drawing-" + appDelegate.getCurrentIndex());
 
     }
     

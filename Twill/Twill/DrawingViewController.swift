@@ -19,6 +19,21 @@ class DrawingViewController:  UIViewController, UICollectionViewDataSource,  UIC
         return drawings.count;
     }
     
+    
+    func getDrawingIdForPath(cellIndex:IndexPath) -> Int{
+        return getDrawingIdForPath(cellIndex:(cellIndex.item as NSNumber).intValue);
+    }
+
+    func getDrawingIdForPath(cellIndex:Int) -> Int{
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
+        var drawings = appDelegate.sortDocs(drawings:(appDelegate.listDrawings()));
+       
+        
+        return appDelegate.getDrawingId(drawingName:drawings[cellIndex]);
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DrawingCell", for: indexPath) as! DrawingCustomCell
 
@@ -38,14 +53,12 @@ class DrawingViewController:  UIViewController, UICollectionViewDataSource,  UIC
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         // GET SORTED LIST OF DRAWINGS
-
-        var drawings = appDelegate.sortDocs(drawings:(appDelegate.listDrawings()));
-        for drawing in drawings {
-            print("drawing:" + drawing)
-        }
         
-        var drawingID = appDelegate.getDrawingId(drawingName:drawings[(indexPath.item as NSNumber).intValue]);
-        var pkDrawing = appDelegate.getPKDrawing(id:drawingID);
+        let cellIndex = (indexPath.item as NSNumber).intValue
+        var drawingId = getDrawingIdForPath(cellIndex:cellIndex)
+       
+        var pkDrawing = appDelegate.getPKDrawing(id:drawingId);
+        
         let imageview:UIImageView=UIImageView(frame: CGRect(x: 50, y: 50, width: self.view.frame.width-200, height: 50))
 
         var image = pkDrawing.image(from: pkDrawing.bounds, scale: 1);
@@ -71,9 +84,12 @@ class DrawingViewController:  UIViewController, UICollectionViewDataSource,  UIC
     func deleteHandler(indexPath: IndexPath)->(_: UIAlertAction?)->() {
         return { alertAction in
             print("delete called");
+            
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.deletePKDrawing(id:(indexPath.item as NSNumber).stringValue)
+            var drawingId = self.getDrawingIdForPath(cellIndex:indexPath);
+            appDelegate.deletePKDrawing(id:drawingId);
             print("delete worked?");
+            self.drawings = appDelegate.sortDocs(drawings:(appDelegate.listDrawings()))
             self.collection.reloadData();
             }
           }
@@ -111,8 +127,9 @@ class DrawingViewController:  UIViewController, UICollectionViewDataSource,  UIC
        let indexPath = self.collection.indexPathForItem(at: location)
 
        if let index = indexPath {
-           var selected = (index.item as NSNumber).stringValue;
+           var selected = getDrawingIdForPath(cellIndex: index)
            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+           
            appDelegate.setCurrentIndex(selected);
            performSegue(withIdentifier: "selected", sender: self)
 

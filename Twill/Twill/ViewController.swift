@@ -18,15 +18,14 @@ class ViewController:  UIViewController, PKCanvasViewDelegate, PKToolPickerObser
 
     var toolPicker: PKToolPicker!
 
-    @IBAction func save(_ sender: UIButton) {
-    }
+    
     
     @IBAction func new(_ sender: UIButton) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.incrementCurrentIndex();
 
         canvasView.drawing = PKDrawing();
-        canvasView.backgroundColor = UIColor.lightGray
+        canvasView.backgroundColor = UIColor.white
         canvasView.delegate = self;
         
 
@@ -107,7 +106,7 @@ class ViewController:  UIViewController, PKCanvasViewDelegate, PKToolPickerObser
            canvasView.alwaysBounceVertical = true
            
            canvasView.frame(forAlignmentRect: self.view.frame)
-           canvasView.backgroundColor = UIColor.lightGray
+           canvasView.backgroundColor = UIColor.white
            
            // Set up the tool picker
            if #available(iOS 14.0, *) {

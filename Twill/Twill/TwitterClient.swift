@@ -89,25 +89,46 @@ class TwitterClient {
         
     }
     
-    
-    
     func tweetImage(image: Data, altText: String, status: String) -> String {
+        tweetImage(image: image, altText: altText, status: status, replyToStatusId:"")
+    }
+    
+    func tweetImage(image: Data, altText: String, status: String, replyToStatusId: String) -> String {
         
         let semaphore = DispatchSemaphore(value: 0)
 
+       
+        
         var tweetId = "";
         NSLog("start upload")
         let mediaId=upload(image:image)
+        
+        
+        
+        var params=[("","")];
+        var urlString = "https://api.twitter.com/1.1/statuses/update.json?status=" + self.escapeUri(uri:status)  + "&media_ids=" + mediaId;
+        
+        
+        if (replyToStatusId.count > 0) {
+            params=[("status", status), ("media_ids", mediaId), ("in_reply_to_status_id", replyToStatusId)]
+            urlString = urlString + "&in_reply_to_status_id=" + replyToStatusId;
+        } else {
+            params=[("status", status), ("media_ids", mediaId)]
+        }
+        
+       let url = URL(string:urlString)!
+
         
         addAltText(mediaId: mediaId, altText:altText)
         let headers=[("Accept", "*/*"),
                 ("Host","api.twitter.com"),
                 ("Content-Type","application/x-www-form-urlencoded"),
                 ("Authorization",
-                 createOAuthHeader(params:[("status", status), ("media_ids", mediaId)], url:"https://api.twitter.com/1.1/statuses/update.json", apiKey:apiKey, apiSecret:apiSecret, accessToken:accessToken, accessTokenSecret:accessTokenSecret, nonce:getOauthNonce(), timestamp:getOauthTimestamp(), method:"Post"))]
+                 createOAuthHeader(params:params, url:"https://api.twitter.com/1.1/statuses/update.json", apiKey:apiKey, apiSecret:apiSecret, accessToken:accessToken, accessTokenSecret:accessTokenSecret, nonce:getOauthNonce(), timestamp:getOauthTimestamp(), method:"Post"))]
               
                  
-        let url = URL(string: "https://api.twitter.com/1.1/statuses/update.json?status=" + self.escapeUri(uri:status)  + "&media_ids=" + mediaId)!
+        
+        
                  var request = URLRequest(url: url)
                  
                  for (index, (key, value)) in headers.enumerated() {

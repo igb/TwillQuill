@@ -166,6 +166,9 @@ em ipsu lorem ipsu lorem ipsu lorem ipsu lorem ipsu lorem ipsu lorem lorem ipsu\
                             <switch hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Wn8-hT-wfg">
                                 <rect key="frame" x="257" y="836" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="thread:" destination="Kqa-SW-ONC" eventType="primaryActionTriggered" id="TN3-uk-3Dy"/>
+                                </connections>
                             </switch>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Kgu-hk-2Bk"/>
@@ -192,7 +195,7 @@ em ipsu lorem ipsu lorem ipsu lorem ipsu lorem ipsu lorem ipsu lorem lorem ipsu\
             <objects>
                 <viewController id="h7t-lE-LRg" customClass="DrawingViewController" customModule="Twill" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8Q5-jF-sBx">
-                        <rect key="frame" x="0.0" y="0.0" width="704" height="995"/>
+                        <rect key="frame" x="0.0" y="0.0" width="704" height="995.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Po1-ES-dX8">

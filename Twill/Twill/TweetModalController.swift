@@ -15,6 +15,7 @@ class TweetModalController:  UIViewController, UITextViewDelegate {
     
     let WHATS_HAPPENING = "What's happening?";
     let DEFAULT_ALT_TEXT =  "A drawing done on an iPad."
+    var threadTweet = false;
     
     @IBOutlet weak var tweetText: UITextView!
     @IBOutlet weak var altText: UITextView!
@@ -29,7 +30,13 @@ class TweetModalController:  UIViewController, UITextViewDelegate {
 
 
 
-
+    @IBAction func thread(_ sender: UISwitch) {
+        if (sender.isOn) {
+            threadTweet=true;
+        } else {
+            threadTweet=false;
+        }
+    }
     
     @IBAction func sendTweet(_ sender: UIButton) {
         
@@ -52,10 +59,24 @@ class TweetModalController:  UIViewController, UITextViewDelegate {
         
         let pngData = image.pngData()!;
 
-        var tweetId = twitter.tweetImage(image: pngData, altText: altText.text, status: tweetText.text);
+        var tweetId = "";
+        
+        if (threadTweet) {
+            let replyToId = appDelegate.getTweetId(drawingId: appDelegate.getCurrentIndex());
+            tweetId = twitter.tweetImage(image: pngData, altText: altText.text, status: tweetText.text, replyToStatusId: replyToId);
+        } else {
+            tweetId = twitter.tweetImage(image: pngData, altText: altText.text, status: tweetText.text);
+        }
+        
         NSLog("tweeted...")
         NSLog("tweet id is . . . " + tweetId)
-        appDelegate.addTweetId(tweetId: tweetId, drawingId: appDelegate.getCurrentIndex());
+        
+        if (tweetId.count > 0) {
+            
+            appDelegate.addTweetId(tweetId: tweetId, drawingId: appDelegate.getCurrentIndex());
+        }
+        
+        threadTweet=false;
         performSegue(withIdentifier: "cancel", sender: self)
 
 
@@ -144,7 +165,7 @@ class TweetModalController:  UIViewController, UITextViewDelegate {
            
            
            image.image=nsImage;
-           image.backgroundColor=UIColor.lightGray;
+           image.backgroundColor=UIColor.white;
              
            
            

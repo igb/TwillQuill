@@ -516,9 +516,28 @@ class TwitterClient {
         
     }
    
+    
+    func escapeJson(json:String)-> String {
         
+        var escapedJson = json;
+        let encoder = JSONEncoder();
+        do {
+            
+            try escapedJson = String(decoding: encoder.encode(json), as: UTF8.self);
+        } catch {
+            NSLog("error encoding alt text");
+        }
+        
+        escapedJson=String(escapedJson.dropFirst(1))
+        return String(escapedJson.dropLast(1));
+       
+        
+    }
     func addAltText(mediaId:String, altText:String) {
-       let json = "{\"media_id\":\"" + mediaId + "\", \"alt_text\": {\"text\":\"" + altText + "\"}}"
+        var escapedAltText = escapeJson(json: altText);
+     
+        
+       let json = "{\"media_id\":\"" + mediaId + "\", \"alt_text\": {\"text\":\"" + escapedAltText + "\"}}"
     
         let headers =  [("Accept", "*/*"),
             ("Host","upload.twitter.com"),

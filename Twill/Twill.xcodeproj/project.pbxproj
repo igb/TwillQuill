@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC0DF37A28ACF8240069E994 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5F4AC728419AB1001EFECC /* AppDelegate.swift */; };
+		CC0DF37B28ACF8650069E994 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5F4AC728419AB1001EFECC /* AppDelegate.swift */; };
+		CC0DF37C28ACF86E0069E994 /* TwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5F4AF728428D53001EFECC /* TwitterClient.swift */; };
+		CC0DF37D28ACF89B0069E994 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5F4ACB28419AB1001EFECC /* ViewController.swift */; };
+		CC0DF37E28ACF8A20069E994 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5F4ACB28419AB1001EFECC /* ViewController.swift */; };
 		CC43C88E2896F60200EA5DF9 /* IMG_4238.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CC43C88D2896F60200EA5DF9 /* IMG_4238.jpg */; };
 		CC43C88F2896F60200EA5DF9 /* IMG_4238.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CC43C88D2896F60200EA5DF9 /* IMG_4238.jpg */; };
 		CC43C8902896F60200EA5DF9 /* IMG_4238.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CC43C88D2896F60200EA5DF9 /* IMG_4238.jpg */; };
@@ -311,6 +316,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC0DF37E28ACF8A20069E994 /* ViewController.swift in Sources */,
+				CC0DF37A28ACF8240069E994 /* AppDelegate.swift in Sources */,
 				CC5F4AF928428D53001EFECC /* TwitterClient.swift in Sources */,
 				CC43C8A72898D15B00EA5DF9 /* DrawingCustomCell.swift in Sources */,
 				CC43C89F28971A1700EA5DF9 /* DrawingViewController.swift in Sources */,
@@ -323,6 +330,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC0DF37D28ACF89B0069E994 /* ViewController.swift in Sources */,
+				CC0DF37C28ACF86E0069E994 /* TwitterClient.swift in Sources */,
+				CC0DF37B28ACF8650069E994 /* AppDelegate.swift in Sources */,
 				CC5F4AE928419AB3001EFECC /* TwillUITests.swift in Sources */,
 				CC43C8A82898D15B00EA5DF9 /* DrawingCustomCell.swift in Sources */,
 				CC43C8A028971A1700EA5DF9 /* DrawingViewController.swift in Sources */,

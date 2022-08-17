@@ -41,6 +41,17 @@ class TwillTests: XCTestCase {
             XCTAssertEqual(key, sortedKey)
         }
     }
+    /**
+     Tests the conversion of a string to a safe  JSON value.
+     */
+    func testEscapeJsonString () throws {
+        
+        let twitter = TwitterClient()
+
+        XCTAssertEqual(twitter.escapeJson(json: "HELLO \"WORLD\""), "HELLO \\\"WORLD\\\"");
+        XCTAssertEqual(twitter.escapeJson(json: "HELLO\nWORLD"), "HELLO\\nWORLD");
+    }
+    
     
     /**
      Tests the conversion of a string to a URL encoded string.
